@@ -94,8 +94,44 @@
             justify-content: center;
             font-size: 0.8em;
         }
-        .calendar .day.active { background: #4ade80; color: #000; }
+        .calendar .day.active { background: #4ade80; color: #000; cursor: pointer; }
+        .calendar .day.active:hover { background: #22c55e; transform: scale(1.1); }
         .calendar .day.empty { background: rgba(255,255,255,0.03); }
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal {
+            background: #1a1a2e;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal h3 { color: #00d4ff; margin-bottom: 20px; }
+        .modal-close {
+            float: right;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        .modal-exercise {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .modal-exercise .name { color: #fff; font-weight: bold; }
+        .modal-exercise .details { color: #4ade80; margin-top: 5px; }
         .last-update { color: #666; font-size: 0.9em; }
         .measurements-grid {
             display: grid;
@@ -180,6 +216,14 @@
             <br>
             <button onclick="checkPassword()">Enter</button>
             <p class="error" id="error-msg">Wrong password</p>
+        </div>
+    </div>
+
+    <div id="day-modal" class="modal-overlay hidden" onclick="if(event.target===this)closeModal()">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <h3 id="modal-title">Workout Details</h3>
+            <div id="modal-content"></div>
         </div>
     </div>
 
@@ -522,9 +566,56 @@
                 const div = document.createElement('div');
                 div.className = 'day';
                 div.textContent = d.getDate();
-                div.className += workoutData.workoutDays.includes(dateStr) ? ' active' : ' empty';
+                const isWorkoutDay = workoutData.workoutDays.includes(dateStr);
+                div.className += isWorkoutDay ? ' active' : ' empty';
+                if (isWorkoutDay) {
+                    div.onclick = () => showDayWorkout(dateStr);
+                }
                 cal.appendChild(div);
             }
+        }
+
+        function showDayWorkout(dateStr) {
+            const modal = document.getElementById('day-modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-content');
+            
+            title.textContent = `📅 Workout on ${dateStr}`;
+            
+            let html = '';
+            
+            // Find cardio for this day
+            const cardio = workoutData.cardio.find(c => c.date === dateStr);
+            if (cardio) {
+                html += `<div class="modal-exercise">
+                    <div class="name">🚴 ${cardio.activity}</div>
+                    <div class="details">${cardio.duration} | ${cardio.distance} | ${cardio.calories}</div>
+                </div>`;
+            }
+            
+            // Find exercises for this day
+            Object.entries(workoutData.exercises).forEach(([bodyPart, exercises]) => {
+                Object.entries(exercises).forEach(([name, ex]) => {
+                    const dayData = ex.data.find(d => d.date === dateStr);
+                    if (dayData) {
+                        html += `<div class="modal-exercise">
+                            <div class="name">${name}</div>
+                            <div class="details">${dayData.weight}${ex.unit} × ${dayData.reps} reps</div>
+                        </div>`;
+                    }
+                });
+            });
+            
+            if (!html) {
+                html = '<p style="color:#888;">No detailed data for this day.</p>';
+            }
+            
+            content.innerHTML = html;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('day-modal').classList.add('hidden');
         }
 
         function renderExercises(bodyPart, containerId) {
