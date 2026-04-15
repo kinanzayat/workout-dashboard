@@ -1,509 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinan's Workout Dashboard</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            min-height: 100vh;
-            padding: 16px;
-        }
-        .container { max-width: 900px; margin: 0 auto; }
-        header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 24px; padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            flex-wrap: wrap; gap: 8px;
-        }
-        h1 { font-size: 1.5em; } h1 span { color: #00d4ff; }
-        h2 { margin: 28px 0 16px; color: #fff; font-size: 1.2em; }
-        .last-update { color: #666; font-size: 0.85em; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinan's Workout Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px; padding-bottom: 16px; gap: 10px; flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    h1 { font-size: 1.5rem; }
+    h1 span { color: #00d4ff; }
+    h2 { margin: 26px 0 14px; font-size: 1.1rem; }
+    .muted { color: #8f96a3; }
+    .last-update { color: #7e8797; font-size: 0.85rem; }
 
-        /* Day Selector */
-        .day-selector { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-        .day-btn {
-            padding: 10px 18px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05); color: #888; cursor: pointer;
-            font-size: 0.9em; font-weight: 600; transition: all 0.2s;
-        }
-        .day-btn:hover { border-color: #00d4ff; color: #fff; }
-        .day-btn.active { background: #00d4ff; color: #000; border-color: #00d4ff; }
-        .day-btn .day-label { display: block; font-size: 0.75em; font-weight: 400; margin-top: 2px; }
+    .banner {
+      margin-bottom: 20px; padding: 16px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0,212,255,0.14), rgba(0,212,255,0.03));
+      border: 1px solid rgba(0,212,255,0.25);
+    }
+    .banner .title { font-size: 1.2rem; font-weight: 700; }
+    .banner .sub { color: #adc2da; margin-top: 6px; font-size: 0.95rem; }
+    .rule-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 10px; border-radius: 999px; font-size: 0.78rem;
+      background: rgba(255,255,255,0.08); color: #d8e7f5;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .pill.gym { background: rgba(52,211,153,0.14); color: #8df1c8; }
+    .pill.note { background: rgba(245,158,11,0.14); color: #f7d28b; }
+    .pill.warn { background: rgba(248,113,113,0.12); color: #fca5a5; }
 
-        /* Today's Workout */
-        .today-section {
-            background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,212,255,0.02));
-            border: 1px solid rgba(0,212,255,0.3); border-radius: 16px;
-            padding: 20px; margin-bottom: 24px;
-        }
-        .today-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
-        .today-title { font-size: 1.3em; font-weight: 700; }
-        .today-badge { background: #00d4ff; color: #000; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 700; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+    .stat-card {
+      background: rgba(255,255,255,0.05); border-radius: 14px; padding: 16px; text-align: center;
+    }
+    .stat-card .value { font-size: 1.8rem; font-weight: 800; color: #00d4ff; }
+    .stat-card .label { color: #96a0af; margin-top: 6px; font-size: 0.82rem; }
 
-        .exercise-row {
-            background: rgba(255,255,255,0.05); border-radius: 12px;
-            padding: 14px; margin-bottom: 10px;
-        }
-        .exercise-name { font-weight: 700; font-size: 1em; margin-bottom: 8px; color: #fff; }
-        .exercise-details { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.85em; }
-        .exercise-details .label { color: #888; }
-        .exercise-details .value { color: #4ade80; font-weight: 600; }
-        .exercise-details .value.warn { color: #f59e0b; }
-        .warmup-section { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); }
-        .warmup-row { display: flex; justify-content: space-between; font-size: 0.8em; color: #888; padding: 2px 0; }
-        .warmup-row .w-val { color: #a78bfa; }
+    .day-selector { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+    .day-btn {
+      padding: 10px 16px; border-radius: 12px; border: 2px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05); color: #9aa5b5; cursor: pointer;
+      font-size: 0.88rem; font-weight: 700;
+    }
+    .day-btn.active { background: #00d4ff; color: #07131f; border-color: #00d4ff; }
+    .day-btn .day-label { display: block; margin-top: 3px; font-weight: 400; font-size: 0.73rem; }
 
-        /* Stats */
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
-        .stat-card { background: rgba(255,255,255,0.05); border-radius: 14px; padding: 16px; text-align: center; }
-        .stat-card .value { font-size: 2em; font-weight: bold; color: #00d4ff; }
-        .stat-card .label { color: #888; margin-top: 4px; font-size: 0.8em; }
+    .section-card {
+      background: rgba(255,255,255,0.05); border-radius: 16px; padding: 16px; margin-bottom: 18px;
+    }
+    .exercise-row {
+      background: rgba(255,255,255,0.05); border-radius: 12px; padding: 14px; margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .exercise-name { font-weight: 800; margin-bottom: 8px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 0.86rem; }
+    .label { color: #8f96a3; }
+    .value { color: #dff4ff; font-weight: 600; }
+    .good { color: #4ade80; }
+    .bad { color: #fb7185; }
+    .warn { color: #f59e0b; }
+    .small-note { margin-top: 8px; color: #cfd6df; font-size: 0.82rem; }
+    .warmups { margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8rem; color: #b6bfd0; }
+    .warmups div { display: flex; justify-content: space-between; padding: 2px 0; }
 
-        /* Cardio */
-        .cardio-card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
-        .cardio-card .top { display: flex; justify-content: space-between; font-size: 0.9em; }
-        .cardio-card .bottom { display: flex; gap: 16px; font-size: 0.8em; color: #888; margin-top: 6px; flex-wrap: wrap; }
-        .cardio-card .highlight { color: #4ade80; font-weight: 600; }
+    .grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; }
+    .cardio-card, .log-card, .ex-card {
+      background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px; margin-bottom: 8px;
+    }
+    .ex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+    .ex-card h4 { margin-bottom: 6px; font-size: 0.95rem; }
+    .curr { font-size: 1.05rem; font-weight: 700; margin-bottom: 5px; }
+    .prog { font-size: 0.83rem; color: #4ade80; }
+    .prog.down { color: #f87171; }
+    .gym-line, .note-line { margin-top: 6px; font-size: 0.78rem; color: #aeb9c8; }
+    .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 10px; }
+    .calendar .hdr { text-align: center; color: #677282; font-size: 0.68rem; padding: 4px; }
+    .calendar .day { aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.76rem; }
+    .calendar .day.active { background: #4ade80; color: #04120b; font-weight: 700; }
+    .calendar .day.empty { background: rgba(255,255,255,0.03); color: #46505e; }
+    .calendar .day.today { border: 2px solid #00d4ff; }
 
-        /* Calendar */
-        .calendar-wrap { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 16px; margin-bottom: 24px; }
-        .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 10px; }
-        .calendar .hdr { text-align: center; color: #666; font-size: 0.7em; padding: 4px; }
-        .calendar .day {
-            aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center;
-            justify-content: center; font-size: 0.75em;
-        }
-        .calendar .day.active { background: #4ade80; color: #000; font-weight: 700; }
-        .calendar .day.empty { background: rgba(255,255,255,0.03); color: #555; }
-        .calendar .day.today { border: 2px solid #00d4ff; }
+    #pw-overlay {
+      position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    #pw-box { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; text-align: center; }
+    #pw-box input {
+      margin-top: 14px; padding: 14px 18px; width: 240px; border-radius: 10px; border: none;
+      background: rgba(255,255,255,0.1); color: white; text-align: center;
+    }
+    #pw-box button {
+      margin-top: 12px; padding: 12px 24px; border-radius: 10px; border: none;
+      background: #00d4ff; color: #08131d; font-weight: 800; cursor: pointer;
+    }
+    #pw-err { color: #f87171; margin-top: 10px; display: none; }
+    .hidden { display: none !important; }
 
-        /* Exercise Progress */
-        .body-section { margin-bottom: 20px; }
-        .body-section h3 { color: #00d4ff; margin-bottom: 12px; font-size: 1.1em; }
-        .ex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
-        .ex-card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 14px; }
-        .ex-card h4 { margin-bottom: 6px; font-size: 0.95em; }
-        .ex-card .curr { font-size: 1.2em; margin-bottom: 4px; }
-        .ex-card .prog { font-size: 0.8em; color: #4ade80; }
-        .ex-card .prog.down { color: #f87171; }
-        .ex-card .target { color: #f59e0b; font-size: 0.8em; }
-
-        /* Password */
-        #pw-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            display: flex; align-items: center; justify-content: center; z-index: 1000;
-        }
-        #pw-box { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; text-align: center; }
-        #pw-box h2 { margin-bottom: 20px; }
-        #pw-box input {
-            padding: 14px 20px; font-size: 1em; border: none; border-radius: 10px;
-            background: rgba(255,255,255,0.1); color: #fff; width: 240px; text-align: center;
-        }
-        #pw-box input::placeholder { color: #666; }
-        #pw-box button {
-            margin-top: 12px; padding: 14px 36px; font-size: 1em; border: none;
-            border-radius: 10px; background: #00d4ff; color: #000; cursor: pointer; font-weight: bold;
-        }
-        #pw-err { color: #f87171; margin-top: 10px; display: none; }
-        .hidden { display: none !important; }
-
-        @media (max-width: 600px) {
-            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-            .stat-card .value { font-size: 1.5em; }
-            .exercise-details { grid-template-columns: 1fr; }
-            .day-selector { gap: 6px; }
-            .day-btn { padding: 8px 12px; font-size: 0.8em; }
-        }
-    </style>
+    @media (max-width: 760px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-2 { grid-template-columns: 1fr; }
+      .details { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<div id="pw-overlay">
+  <div id="pw-overlay">
     <div id="pw-box">
-        <h2>🏋️ Workout Dashboard</h2>
-        <p style="color:#888;margin-bottom:20px;">Enter password</p>
-        <input type="password" id="pw" placeholder="Password" onkeypress="if(event.key==='Enter')unlock()">
-        <br><button onclick="unlock()">Enter</button>
-        <p id="pw-err">Wrong password</p>
+      <h2>🏋️ Workout Dashboard</h2>
+      <p class="muted">Enter password</p>
+      <input type="password" id="pw" placeholder="Password" onkeypress="if(event.key==='Enter')unlock()" />
+      <br />
+      <button onclick="unlock()">Enter</button>
+      <p id="pw-err">Wrong password</p>
     </div>
-</div>
+  </div>
 
-<div class="container hidden" id="app">
+  <div class="container hidden" id="app">
     <header>
-        <h1>🏋️ <span>Kinan's</span> Dashboard</h1>
-        <span class="last-update">Updated: 2026-04-13</span>
+      <h1>🏋️ <span>Kinan's</span> Dashboard</h1>
+      <span class="last-update" id="lastUpdate"></span>
     </header>
 
-    <!-- Day Selector -->
-    <div class="day-selector" id="daySelector"></div>
+    <div class="banner">
+      <div class="title" id="nextUp"></div>
+      <div class="sub">Generated from the workout log. No more hand-maintained fake dashboard state.</div>
+      <div class="rule-list" id="ruleList"></div>
+    </div>
 
-    <!-- Today's Workout -->
-    <div class="today-section" id="todaySection"></div>
-
-    <!-- Stats -->
     <div class="stats-grid">
-        <div class="stat-card"><div class="value" id="sTotal">0</div><div class="label">Workouts</div></div>
-        <div class="stat-card"><div class="value" id="sStreak">0</div><div class="label">Week Streak 🔥</div></div>
-        <div class="stat-card"><div class="value" id="sImproved">0</div><div class="label">Improved</div></div>
+      <div class="stat-card"><div class="value" id="sTotal">0</div><div class="label">Workout days</div></div>
+      <div class="stat-card"><div class="value" id="sStreak">0</div><div class="label">Week streak</div></div>
+      <div class="stat-card"><div class="value" id="sImproved">0</div><div class="label">Improved lifts</div></div>
+      <div class="stat-card"><div class="value" id="sGyms">0</div><div class="label">Tracked gyms</div></div>
     </div>
 
-    <!-- Cardio -->
-    <h2>🚴 Recent Cardio</h2>
-    <div id="cardioList"></div>
+    <div class="day-selector" id="daySelector"></div>
+    <div class="section-card" id="todaySection"></div>
 
-    <!-- Calendar -->
-    <div class="calendar-wrap">
-        <div style="font-size:1em;font-weight:600;">📅 Last 28 Days</div>
-        <div class="calendar" id="calendar"></div>
+    <div class="grid-2">
+      <div>
+        <h2>💪 Exercise Progress</h2>
+        <div id="exerciseProgress"></div>
+      </div>
+      <div>
+        <h2>🚴 Warmups / Cardio</h2>
+        <div id="cardioList"></div>
+
+        <h2>📅 Last 28 Days</h2>
+        <div class="section-card">
+          <div class="calendar" id="calendar"></div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Exercise Progress -->
-    <h2>💪 All Exercises</h2>
-    <div id="exerciseProgress"></div>
-</div>
+  <script src="workout-data.js"></script>
+  <script>
+    const DATA = window.WORKOUT_DATA;
+    const state = { selectedDayIdx: 0 };
 
-<script>
-function unlock(){
-    if(document.getElementById('pw').value==='bigmike'){
+    function unlock() {
+      if (document.getElementById('pw').value === 'bigmike') {
         document.getElementById('pw-overlay').classList.add('hidden');
         document.getElementById('app').classList.remove('hidden');
         init();
-    } else {
-        document.getElementById('pw-err').style.display='block';
+      } else {
+        document.getElementById('pw-err').style.display = 'block';
+      }
     }
-}
 
-// ========== DATA ==========
-const SPLIT = [
-    { day: 1, label: 'Chest / Back / Legs', exercises: [
-        { name: 'Chest Press Flat (DBs)', key: 'chestPressFlatDB' },
-        { name: 'Lat Pulldown', key: 'latPulldown' },
-        { name: 'Squats / Bulgarian Split', key: 'squats' },
-        { name: 'Lateral Raise (DB)', key: 'lateralRaiseDB' },
-        { name: 'Preacher Curl', key: 'preacherCurl' },
-    ]},
-    { day: 2, label: 'Incline / Row / Hamstring', exercises: [
-        { name: 'Incline Chest Press (Smith)', key: 'inclineChestPress' },
-        { name: 'Upper Back Row', key: 'upperBackRow' },
-        { name: 'Leg Curl', key: 'legCurl' },
-        { name: 'Reverse Pec Deck', key: 'reversePecDeck' },
-        { name: 'Overhead Triceps (Cable)', key: 'overheadTricepsCable' },
-        { name: 'Calf Raises', key: 'calfRaises' },
-    ]},
-    { day: 3, label: 'Pec / Lat / Quads', exercises: [
-        { name: 'Pec Deck', key: 'pecDeck' },
-        { name: 'Lat Row (Cable)', key: 'latRow' },
-        { name: 'Leg Extension', key: 'legExtension' },
-        { name: 'Cable V-Bar Pushdown', key: 'cableVBar' },
-        { name: 'Bicep Curl (Barbell)', key: 'bicepCurl' },
-    ]},
-    { day: 4, label: 'Shoulders / Pull / RDL', exercises: [
-        { name: 'Delt Press Machine', key: 'deltPress' },
-        { name: 'Lat Pullover', key: 'latPullover' },
-        { name: 'RDLs (Dumbbells)', key: 'rdls' },
-        { name: 'Cable Triceps Extension', key: 'cableTriceps' },
-        { name: 'Hammer / Rope Curls', key: 'hammerCurls' },
-        { name: 'Calf Raises', key: 'calfRaises' },
-    ]}
-];
-
-const EXERCISES = {
-    chestPressFlatDB: { unit:'kg', note:'each hand', data:[
-        {d:'2026-02-01',w:40,r:10},{d:'2026-02-21',w:40,r:10},{d:'2026-03-03',w:45,r:8},
-        {d:'2026-03-09',w:45,r:10},{d:'2026-03-16',w:50,r:8},{d:'2026-03-28',w:50,r:9},
-        {d:'2026-04-10',w:25,r:10}
-    ]},
-    latPulldown: { unit:'kg', data:[
-        {d:'2026-02-01',w:45.5,r:8},{d:'2026-02-21',w:45.5,r:9},{d:'2026-03-03',w:45.5,r:10},
-        {d:'2026-03-09',w:54,r:7},{d:'2026-03-16',w:54,r:9},{d:'2026-03-28',w:54,r:10},
-        {d:'2026-04-13',w:50,r:10}
-    ]},
-    squats: { unit:'kg', note:'per side', data:[
-        {d:'2026-02-01',w:25,r:10},{d:'2026-02-21',w:27.5,r:10},{d:'2026-03-03',w:30,r:8},
-        {d:'2026-03-28',w:30,r:9},{d:'2026-04-10',w:30,r:7}
-    ]},
-    lateralRaiseDB: { unit:'kg', data:[
-        {d:'2026-03-07',w:7.5,r:10},{d:'2026-03-09',w:7.5,r:10},{d:'2026-03-16',w:7.5,r:14},
-        {d:'2026-03-28',w:10,r:10}
-    ]},
-    preacherCurl: { unit:'kg', note:'each hand', data:[
-        {d:'2026-02-03',w:10,r:5},{d:'2026-02-21',w:10,r:7},{d:'2026-03-09',w:7.5,r:10},
-        {d:'2026-03-16',w:7.5,r:10},{d:'2026-04-10',w:10,r:10}
-    ]},
-    inclineChestPress: { unit:'kg', note:'per side (Smith)', data:[
-        {d:'2026-02-02',w:20,r:9},{d:'2026-02-23',w:25,r:7},{d:'2026-03-04',w:25,r:8},
-        {d:'2026-03-07',w:25,r:6},{d:'2026-03-10',w:20,r:7},{d:'2026-03-17',w:20,r:8},
-        {d:'2026-04-05',w:25,r:7},{d:'2026-04-11',w:20,r:5}
-    ]},
-    upperBackRow: { unit:'', note:'machine', data:[
-        {d:'2026-03-04',w:80,r:9},{d:'2026-03-10',w:80,r:10},{d:'2026-04-11',w:70,r:10},
-        {d:'2026-04-12',w:65,r:7}
-    ]},
-    legCurl: { unit:'kg', data:[
-        {d:'2026-02-02',w:45,r:9},{d:'2026-03-04',w:50,r:8},{d:'2026-03-10',w:50,r:10},
-        {d:'2026-04-05',w:55,r:8},{d:'2026-04-11',w:105,r:7}
-    ]},
-    reversePecDeck: { unit:'kg', data:[
-        {d:'2026-02-02',w:45.5,r:7},{d:'2026-03-04',w:45.5,r:7},{d:'2026-03-10',w:45.5,r:5},
-        {d:'2026-03-17',w:45.5,r:10},{d:'2026-04-05',w:45.5,r:5}
-    ]},
-    overheadTricepsCable: { unit:'kg', data:[
-        {d:'2026-03-04',w:27,r:7},{d:'2026-03-17',w:30,r:6}
-    ]},
-    calfRaises: { unit:'kg', data:[] },
-    pecDeck: { unit:'kg', data:[
-        {d:'2026-02-03',w:60,r:8},{d:'2026-02-25',w:60,r:10},{d:'2026-03-05',w:65,r:7},
-        {d:'2026-03-11',w:52,r:8},{d:'2026-04-07',w:25,r:8}
-    ]},
-    latRow: { unit:'kg', data:[
-        {d:'2026-02-03',w:80,r:9},{d:'2026-02-25',w:80,r:10},{d:'2026-03-05',w:90,r:8},
-        {d:'2026-03-11',w:90,r:9},{d:'2026-04-07',w:100,r:10}
-    ]},
-    legExtension: { unit:'kg', data:[
-        {d:'2026-02-03',w:54,r:10},{d:'2026-02-23',w:54,r:9},{d:'2026-03-05',w:54,r:10},
-        {d:'2026-03-11',w:59,r:8},{d:'2026-04-07',w:64,r:11},{d:'2026-04-12',w:75,r:8}
-    ]},
-    cableVBar: { unit:'', data:[
-        {d:'2026-02-03',w:55,r:9},{d:'2026-02-25',w:60,r:9},{d:'2026-03-05',w:60,r:9},
-        {d:'2026-04-07',w:60,r:10},{d:'2026-04-12',w:35,r:8}
-    ]},
-    bicepCurl: { unit:'kg', data:[
-        {d:'2026-02-01',w:25,r:8},{d:'2026-02-25',w:25,r:9},{d:'2026-03-05',w:25,r:10},
-        {d:'2026-03-11',w:25,r:10},{d:'2026-04-12',w:25,r:10}
-    ]},
-    deltPress: { unit:'kg', note:'per side', data:[
-        {d:'2026-03-02',w:40,r:9},{d:'2026-04-08',w:25,r:10},{d:'2026-04-13',w:30,r:6}
-    ]},
-    latPullover: { unit:'kg', data:[
-        {d:'2026-03-02',w:40,r:8},{d:'2026-04-08',w:50,r:9}
-    ]},
-    rdls: { unit:'kg', note:'each hand', data:[
-        {d:'2026-03-07',w:12.5,r:10},{d:'2026-04-08',w:20,r:10}
-    ]},
-    cableTriceps: { unit:'kg', data:[
-        {d:'2026-03-04',w:27,r:7},{d:'2026-03-10',w:30,r:10},{d:'2026-04-05',w:30,r:9},
-        {d:'2026-04-08',w:38.6,r:9},{d:'2026-04-13',w:25,r:10}
-    ]},
-    hammerCurls: { unit:'kg', note:'each hand', data:[
-        {d:'2026-04-08',w:15,r:9},{d:'2026-04-13',w:12.5,r:10}
-    ]},
-    cableChestFly: { unit:'kg', data:[
-        {d:'2026-03-07',w:25,r:10},{d:'2026-03-16',w:25,r:10}
-    ]},
-};
-
-const CARDIO = [
-    {d:'2026-03-16',a:'Cycling',dur:'9:32',dist:'4.29 km',cal:'69 kcal',note:'lvl 4, 164 bpm'},
-    {d:'2026-03-15',a:'Running',dur:'29:20',dist:'3.84 km',cal:'235 kcal',note:"7'37\"/km pace"},
-    {d:'2026-03-11',a:'Cycling',dur:'9:23',dist:'4.78 km',cal:'79 kcal',note:'lvl 4, 169 bpm'},
-    {d:'2026-03-10',a:'Cycling',dur:'10:11',dist:'5.02 km',cal:'84 kcal',note:'lvl 6, 169 bpm'},
-    {d:'2026-03-09',a:'Walk+Cycle',dur:'45+5:15',dist:'2.49 km',cal:'39 kcal',note:'138 bpm'},
-];
-
-const WORKOUT_DAYS = [
-    '2026-02-01','2026-02-02','2026-02-03','2026-02-21','2026-02-23','2026-02-25',
-    '2026-03-02','2026-03-03','2026-03-04','2026-03-05','2026-03-07','2026-03-09',
-    '2026-03-10','2026-03-11','2026-03-14','2026-03-15','2026-03-16','2026-03-19','2026-03-26',
-    '2026-03-28','2026-04-05','2026-04-07','2026-04-08','2026-04-10','2026-04-11','2026-04-12','2026-04-13'
-];
-
-// Last completed day: Day 1 on Mar 16. Next = Day 2
-const LAST_DAY_INDEX = 3; // 0-based: Day 4 was last
-
-let selectedDay = 0; // default to Day 1 (next up)
-
-function init() {
-    renderDaySelector();
-    renderToday(selectedDay);
-    renderStats();
-    renderCardio();
-    renderCalendar();
-    renderAllExercises();
-}
-
-function renderDaySelector() {
-    const el = document.getElementById('daySelector');
-    SPLIT.forEach((s, i) => {
-        const btn = document.createElement('div');
-        btn.className = 'day-btn' + (i === selectedDay ? ' active' : '');
-        btn.innerHTML = `Day ${s.day}<span class="day-label">${s.label}</span>`;
-        btn.onclick = () => { selectedDay = i; renderDaySelector(); renderToday(i); };
-        el.appendChild(btn);
-    });
-    // Rebuild to update active state
-    if (el.children.length > 4) {
-        el.innerHTML = '';
-        SPLIT.forEach((s, i) => {
-            const btn = document.createElement('div');
-            btn.className = 'day-btn' + (i === selectedDay ? ' active' : '');
-            btn.innerHTML = `Day ${s.day}<span class="day-label">${s.label}</span>`;
-            btn.onclick = () => { selectedDay = i; el.innerHTML=''; renderDaySelector(); renderToday(i); };
-            el.appendChild(btn);
-        });
+    function gymLabel(gymId) {
+      return DATA.gyms[gymId]?.label || gymId || 'Unknown gym';
     }
-}
 
-function renderToday(dayIdx) {
-    const split = SPLIT[dayIdx];
-    const sec = document.getElementById('todaySection');
-    let html = `<div class="today-header">
-        <div class="today-title">🎯 Day ${split.day} — ${split.label}</div>
-        <div class="today-badge">${dayIdx === selectedDay ? 'NEXT UP' : 'Day ' + split.day}</div>
-    </div>`;
+    function formatSets(entry) {
+      return entry.sets.join(',');
+    }
 
-    split.exercises.forEach(ex => {
-        const data = EXERCISES[ex.key];
-        if (!data) { html += exRow(ex.name, '--', '--', '--', null, ''); return; }
-        const last = data.data.length ? data.data[data.data.length - 1] : null;
-        const prev = data.data.length > 1 ? data.data[data.data.length - 2] : null;
-        const unit = data.unit;
-        const note = data.note || '';
+    function formatEntry(entry) {
+      return `${entry.weightText} × ${formatSets(entry)}`;
+    }
 
-        if (!last) {
-            html += exRow(ex.name, 'No data', '--', '--', null, unit);
-            return;
-        }
+    function compareEntry(entries, idx) {
+      const current = entries[idx];
+      for (let i = idx - 1; i >= 0; i--) {
+        if (entries[i].gymId === current.gymId && current.gymId !== 'unknown') return entries[i];
+      }
+      return idx > 0 ? entries[idx - 1] : null;
+    }
 
-        const w = last.w;
-        const r = last.r;
-        const prevStr = prev ? `${prev.w}${unit} × ${prev.r}` : '--';
-        const hitTarget = r >= 10;
+    function changeSummary(current, prev) {
+      if (!prev) return 'New baseline';
+      const notes = [];
+      if (current.gymId !== prev.gymId && current.gymId !== 'unknown' && prev.gymId !== 'unknown') {
+        notes.push('gym changed');
+      }
+      if (current.weightValue != null && prev.weightValue != null) {
+        const dw = +(current.weightValue - prev.weightValue).toFixed(1);
+        if (dw > 0) notes.push(`+${dw}${current.unit}`);
+        if (dw < 0) notes.push(`${dw}${current.unit}`);
+      }
+      const dr = current.bestSet - prev.bestSet;
+      if (dr > 0) notes.push(`+${dr} reps`);
+      if (dr < 0) notes.push(`${dr} reps`);
+      if (!notes.length) notes.push('same result');
+      return notes.join(', ');
+    }
 
-        // Warmup calc
-        const w1 = Math.round(w * 0.5 * 2) / 2;
-        const w2 = Math.round(w * 0.8 * 2) / 2;
+    function splitByDay(day) {
+      return DATA.split.find(s => s.day === day);
+    }
 
-        html += `<div class="exercise-row">
-            <div class="exercise-name">${ex.name} ${note ? '<span style="color:#888;font-size:0.8em">('+note+')</span>':''}</div>
-            <div class="exercise-details">
-                <div><span class="label">Working:</span> <span class="value">${w}${unit} × aim ${hitTarget ? Math.round(w*1.1*2)/2+unit+' / 8+' : w+unit+' / 10'}</span></div>
-                <div><span class="label">Last:</span> <span class="value ${r<10?'warn':''}">${w}${unit} × ${r} reps ${r>=10?'✅':'❌'}</span></div>
-                <div><span class="label">Previous:</span> <span style="color:#888">${prevStr}</span></div>
-                <div><span class="label">Status:</span> <span class="value">${hitTarget ? '🔺 Ready to progress!' : '🔄 Stay at '+w+unit}</span></div>
-            </div>
-            ${w > 5 ? `<div class="warmup-section">
-                <div class="warmup-row"><span>Warmup 1:</span> <span class="w-val">${w1}${unit} × 12 reps</span></div>
-                <div class="warmup-row"><span>Warmup 2:</span> <span class="w-val">${w2}${unit} × 5 reps</span></div>
-            </div>` : ''}
-        </div>`;
-    });
+    function latestEntryForKey(key) {
+      const entries = DATA.exercises[key] || [];
+      return entries.length ? entries[entries.length - 1] : null;
+    }
 
-    sec.innerHTML = html;
-}
+    function init() {
+      document.getElementById('lastUpdate').textContent = `Updated: ${DATA.lastUpdate || '—'} · generated ${DATA.generatedAt}`;
+      document.getElementById('nextUp').textContent = `Next up: Day ${DATA.nextSplitDay} — ${splitByDay(DATA.nextSplitDay).label}`;
+      state.selectedDayIdx = DATA.nextSplitDay - 1;
+      renderRules();
+      renderStats();
+      renderDaySelector();
+      renderToday();
+      renderExerciseProgress();
+      renderCardio();
+      renderCalendar();
+    }
 
-function exRow(name, working, last, prev, warmups, unit) {
-    return `<div class="exercise-row">
-        <div class="exercise-name">${name}</div>
-        <div class="exercise-details">
-            <div><span class="label">Working:</span> <span style="color:#888">${working}</span></div>
-            <div><span class="label">Last:</span> <span style="color:#888">${last}</span></div>
-        </div>
-    </div>`;
-}
+    function renderRules() {
+      const el = document.getElementById('ruleList');
+      const items = [
+        '2 sets tracked',
+        'Missing 2nd set ⇒ same as 1st',
+        'Compare same gym first',
+        'Exercise notes kept',
+      ];
+      el.innerHTML = items.map(i => `<span class="pill">${i}</span>`).join('');
+    }
 
-function renderStats() {
-    document.getElementById('sTotal').textContent = WORKOUT_DAYS.length;
-    // Streak: consecutive weeks with 2+ workouts
-    const weeks = {};
-    WORKOUT_DAYS.forEach(d => {
+    function renderStats() {
+      document.getElementById('sTotal').textContent = DATA.workoutDays.length;
+      document.getElementById('sGyms').textContent = Object.keys(DATA.gyms).length - 1;
+
+      const weeks = {};
+      DATA.workoutDays.forEach(d => {
         const dt = new Date(d);
-        const wk = Math.floor((dt - new Date('2026-01-05')) / (7*86400000));
-        weeks[wk] = (weeks[wk]||0)+1;
-    });
-    const currWk = Math.floor((new Date('2026-04-15') - new Date('2026-01-05')) / (7*86400000));
-    let streak = 0;
-    for (let w = currWk; w >= currWk - 20; w--) {
+        const wk = Math.floor((dt - new Date('2026-01-05')) / (7 * 86400000));
+        weeks[wk] = (weeks[wk] || 0) + 1;
+      });
+      const currWk = Math.floor((new Date(DATA.lastUpdate) - new Date('2026-01-05')) / (7 * 86400000));
+      let streak = 0;
+      for (let w = currWk; w >= currWk - 30; w--) {
         if (weeks[w] && weeks[w] >= 2) streak++; else if (w < currWk) break;
+      }
+      document.getElementById('sStreak').textContent = streak;
+
+      let improved = 0;
+      Object.entries(DATA.exercises).forEach(([key, entries]) => {
+        if (entries.length < 2) return;
+        const last = entries[entries.length - 1];
+        const prev = compareEntry(entries, entries.length - 1);
+        if (!prev) return;
+        if ((last.weightValue || 0) > (prev.weightValue || 0) || last.bestSet > prev.bestSet) improved++;
+      });
+      document.getElementById('sImproved').textContent = improved;
     }
-    document.getElementById('sStreak').textContent = streak;
-    // Improved
-    let imp = 0;
-    Object.values(EXERCISES).forEach(ex => {
-        if (ex.data.length >= 2) {
-            const f = ex.data[0], l = ex.data[ex.data.length-1];
-            if (l.w > f.w || (l.w === f.w && l.r > f.r)) imp++;
-        }
-    });
-    document.getElementById('sImproved').textContent = imp;
-}
 
-function renderCardio() {
-    const el = document.getElementById('cardioList');
-    CARDIO.slice(0, 5).forEach(c => {
-        el.innerHTML += `<div class="cardio-card">
-            <div class="top"><span>${c.d}</span><span class="highlight">${c.a}</span></div>
-            <div class="bottom"><span>⏱ ${c.dur}</span><span>📏 ${c.dist}</span><span>🔥 ${c.cal}</span><span>${c.note}</span></div>
-        </div>`;
-    });
-}
-
-function renderCalendar() {
-    const cal = document.getElementById('calendar');
-    const today = new Date('2026-04-15');
-    ['S','M','T','W','T','F','S'].forEach(d => {
-        cal.innerHTML += `<div class="hdr">${d}</div>`;
-    });
-    // Start from 28 days ago, aligned to Sunday
-    const start = new Date(today); start.setDate(start.getDate() - 27);
-    const pad = start.getDay();
-    for (let i = 0; i < pad; i++) cal.innerHTML += '<div class="day empty"></div>';
-    for (let i = 0; i < 28; i++) {
-        const d = new Date(start); d.setDate(d.getDate() + i);
-        const ds = d.toISOString().split('T')[0];
-        const isW = WORKOUT_DAYS.includes(ds);
-        const isToday = ds === '2026-04-15';
-        cal.innerHTML += `<div class="day ${isW?'active':''} ${isToday?'today':''}">${d.getDate()}</div>`;
+    function renderDaySelector() {
+      const el = document.getElementById('daySelector');
+      el.innerHTML = '';
+      DATA.split.forEach((s, i) => {
+        const btn = document.createElement('div');
+        btn.className = 'day-btn' + (i === state.selectedDayIdx ? ' active' : '');
+        btn.innerHTML = `Day ${s.day}<span class="day-label">${s.label}</span>`;
+        btn.onclick = () => {
+          state.selectedDayIdx = i;
+          renderDaySelector();
+          renderToday();
+        };
+        el.appendChild(btn);
+      });
     }
-}
 
-function renderAllExercises() {
-    const el = document.getElementById('exerciseProgress');
-    const groups = {
-        '🫁 Chest': ['chestPressFlatDB','inclineChestPress','pecDeck','cableChestFly'],
-        '🔙 Back': ['latPulldown','latRow','upperBackRow','latPullover'],
-        '🦵 Legs': ['squats','legCurl','legExtension','rdls'],
-        '🤷 Shoulders': ['deltPress','lateralRaiseDB','reversePecDeck'],
-        '💪 Arms': ['preacherCurl','bicepCurl','overheadTricepsCable','cableVBar','cableTriceps'],
-    };
-    const names = {
-        chestPressFlatDB:'Chest Press (Flat DB)',inclineChestPress:'Incline Press (Smith)',
-        pecDeck:'Pec Deck',cableChestFly:'Cable Chest Fly',latPulldown:'Lat Pulldown',
-        latRow:'Lat Row (Cable)',upperBackRow:'Upper Back Row',latPullover:'Lat Pullover',
-        squats:'Squats/Bulgarian',legCurl:'Leg Curl',legExtension:'Leg Extension',
-        rdls:'RDLs (DB)',deltPress:'Delt Press Machine',lateralRaiseDB:'Lateral Raise (DB)',
-        reversePecDeck:'Reverse Pec Deck',preacherCurl:'Preacher Curl',bicepCurl:'Bicep Curl',
-        overheadTricepsCable:'OH Triceps (Cable)',cableVBar:'V-Bar Pushdown',cableTriceps:'Cable Triceps',
-    };
-    Object.entries(groups).forEach(([title, keys]) => {
-        let html = `<div class="body-section"><h3>${title}</h3><div class="ex-grid">`;
-        keys.forEach(k => {
-            const ex = EXERCISES[k];
-            if (!ex || !ex.data.length) return;
-            const last = ex.data[ex.data.length-1];
-            const prev = ex.data.length>1 ? ex.data[ex.data.length-2] : null;
-            let prog = '', cls = '';
-            if (prev) {
-                if (last.w > prev.w) { prog = `↑ +${(last.w-prev.w)}${ex.unit}`; }
-                else if (last.r > prev.r) { prog = `↑ +${last.r-prev.r} reps`; }
-                else if (last.r < prev.r) { prog = `↓ ${last.r-prev.r} reps`; cls='down'; }
-                else prog = '→ Same';
-            }
-            html += `<div class="ex-card">
-                <h4>${names[k]||k}</h4>
-                <div class="curr">${last.w}${ex.unit} × ${last.r}</div>
-                <div class="prog ${cls}">${prog}</div>
-                <div class="target">${last.r>=10?'✅ Hit target':'🎯 Target: 10 reps'}</div>
+    function renderToday() {
+      const split = DATA.split[state.selectedDayIdx];
+      const sec = document.getElementById('todaySection');
+      let html = `<div class="exercise-name" style="font-size:1.15rem; margin-bottom:14px;">🎯 Day ${split.day} — ${split.label} <span class="pill">${split.day === DATA.nextSplitDay ? 'NEXT UP' : 'REFERENCE'}</span></div>`;
+
+      split.keys.forEach(key => {
+        const meta = DATA.exerciseMeta[key];
+        const entries = DATA.exercises[key] || [];
+        if (!entries.length) return;
+        const last = entries[entries.length - 1];
+        const prev = compareEntry(entries, entries.length - 1);
+        const hitTarget = last.bestSet >= 10;
+        const w = last.weightValue || 0;
+        const warm1 = w ? Math.round(w * 0.5 * 2) / 2 : null;
+        const warm2 = w ? Math.round(w * 0.8 * 2) / 2 : null;
+
+        html += `
+          <div class="exercise-row">
+            <div class="exercise-name">
+              ${meta?.name || key}
+              <span class="pill gym">${gymLabel(last.gymId)}</span>
+              ${last.note ? '<span class="pill note">note saved</span>' : ''}
+            </div>
+            <div class="details">
+              <div><span class="label">Last:</span> <span class="value ${hitTarget ? 'good' : 'warn'}">${formatEntry(last)} ${hitTarget ? '✅' : '❌'}</span></div>
+              <div><span class="label">Compare vs:</span> <span class="value">${prev ? formatEntry(prev) : '—'}</span></div>
+              <div><span class="label">Progress:</span> <span class="value">${changeSummary(last, prev)}</span></div>
+              <div><span class="label">Target:</span> <span class="value">${hitTarget ? 'Ready to increase or note machine cap' : 'Stay here until 10'}</span></div>
+            </div>
+            ${last.note ? `<div class="small-note">📝 ${last.note}</div>` : ''}
+            ${warm1 ? `<div class="warmups"><div><span>Warmup 1</span><span>${warm1}${last.unit} × 12</span></div><div><span>Warmup 2</span><span>${warm2}${last.unit} × 5-6</span></div></div>` : ''}
+          </div>`;
+      });
+
+      sec.innerHTML = html;
+    }
+
+    function renderExerciseProgress() {
+      const groups = ['Chest', 'Back', 'Legs', 'Shoulders', 'Arms'];
+      const el = document.getElementById('exerciseProgress');
+      el.innerHTML = '';
+
+      groups.forEach(group => {
+        let cards = '';
+        Object.entries(DATA.exercises).forEach(([key, entries]) => {
+          const meta = DATA.exerciseMeta[key];
+          if (!meta || meta.group !== group || !entries.length) return;
+          const last = entries[entries.length - 1];
+          const prev = compareEntry(entries, entries.length - 1);
+          const delta = prev ? last.bestSet - prev.bestSet : 0;
+          const cls = delta < 0 ? 'down' : '';
+          cards += `
+            <div class="ex-card">
+              <h4>${meta.name}</h4>
+              <div class="curr">${formatEntry(last)}</div>
+              <div class="prog ${cls}">${changeSummary(last, prev)}</div>
+              <div class="gym-line">🏢 ${gymLabel(last.gymId)}</div>
+              ${last.note ? `<div class="note-line">📝 ${last.note}</div>` : ''}
             </div>`;
         });
-        html += '</div></div>';
-        el.innerHTML += html;
-    });
-}
-</script>
+        if (!cards) return;
+        el.innerHTML += `<h2>${group}</h2><div class="ex-grid">${cards}</div>`;
+      });
+    }
+
+    function renderCardio() {
+      const el = document.getElementById('cardioList');
+      el.innerHTML = DATA.cardio.slice(0, 6).map(c => `
+        <div class="cardio-card">
+          <div><strong>${c.date}</strong> · ${c.activity}</div>
+          <div class="muted" style="margin-top:6px;">${c.summary}</div>
+          <div class="muted" style="margin-top:4px; font-size:0.82rem;">${c.notes}</div>
+        </div>`).join('');
+    }
+
+    function renderCalendar() {
+      const cal = document.getElementById('calendar');
+      cal.innerHTML = '';
+      const today = new Date(DATA.lastUpdate || new Date().toISOString().slice(0, 10));
+      ['S','M','T','W','T','F','S'].forEach(d => cal.innerHTML += `<div class="hdr">${d}</div>`);
+      const start = new Date(today); start.setDate(start.getDate() - 27);
+      const pad = start.getDay();
+      for (let i = 0; i < pad; i++) cal.innerHTML += '<div class="day empty"></div>';
+      for (let i = 0; i < 28; i++) {
+        const d = new Date(start); d.setDate(d.getDate() + i);
+        const ds = d.toISOString().split('T')[0];
+        const isW = DATA.workoutDays.includes(ds);
+        const isToday = ds === (DATA.lastUpdate || '');
+        cal.innerHTML += `<div class="day ${isW ? 'active' : 'empty'} ${isToday ? 'today' : ''}">${d.getDate()}</div>`;
+      }
+    }
+  </script>
 </body>
 </html>
