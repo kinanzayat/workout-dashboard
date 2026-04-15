@@ -6,6 +6,8 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+from workout_utils import compare_entry, rep_delta, weight_delta
+
 ROOT = Path('/home/node/clawd')
 LOG_PATH = ROOT / 'routines' / 'weight-log.md'
 OUT_PATH = ROOT / 'dashboard' / 'workout-data.js'
@@ -224,6 +226,26 @@ def main():
         last_split_day = 4
     next_split_day = 1 if last_split_day == 4 else last_split_day + 1
 
+    recent_session = []
+    if last_update:
+        for key, entries in exercises.items():
+            if entries[-1]['date'] != last_update:
+                continue
+            current = entries[-1]
+            prev = compare_entry(entries, len(entries) - 1)
+            meta = EXERCISE_META.get(key, {})
+            recent_session.append({
+                'key': key,
+                'name': meta.get('name', key),
+                'group': meta.get('group'),
+                'splitDay': meta.get('splitDay'),
+                'current': current,
+                'previous': prev,
+                'weightDelta': weight_delta(current, prev),
+                'repDelta': rep_delta(current, prev),
+            })
+        recent_session.sort(key=lambda x: (x.get('splitDay', 99), x.get('name', '')))
+
     data = {
         'generatedAt': datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC'),
         'lastUpdate': last_update,
@@ -235,6 +257,7 @@ def main():
         'workoutDays': sorted(workout_days),
         'lastSplitDay': last_split_day,
         'nextSplitDay': next_split_day,
+        'recentSession': recent_session,
         'entryRules': {
             'defaultSetCount': 2,
             'assumeSecondSetSameIfMissing': True,

@@ -160,6 +160,9 @@
         <h2>🚴 Warmups / Cardio</h2>
         <div id="cardioList"></div>
 
+        <h2>🧾 Latest Session Summary</h2>
+        <div class="section-card" id="recentSession"></div>
+
         <h2>📅 Last 28 Days</h2>
         <div class="section-card">
           <div class="calendar" id="calendar"></div>
@@ -240,6 +243,7 @@
       renderToday();
       renderExerciseProgress();
       renderCardio();
+      renderRecentSession();
       renderCalendar();
     }
 
@@ -371,6 +375,30 @@
           <div class="muted" style="margin-top:6px;">${c.summary}</div>
           <div class="muted" style="margin-top:4px; font-size:0.82rem;">${c.notes}</div>
         </div>`).join('');
+    }
+
+    function renderRecentSession() {
+      const el = document.getElementById('recentSession');
+      const session = DATA.recentSession || [];
+      if (!session.length) {
+        el.innerHTML = '<div class="muted">No recent session found.</div>';
+        return;
+      }
+      el.innerHTML = session.map(item => {
+        const cur = item.current;
+        const prev = item.previous;
+        const parts = [];
+        if (item.weightDelta != null && item.weightDelta !== 0) parts.push(`${item.weightDelta > 0 ? '+' : ''}${item.weightDelta}${cur.unit}`);
+        if (item.repDelta != null && item.repDelta !== 0) parts.push(`${item.repDelta > 0 ? '+' : ''}${item.repDelta} reps`);
+        const progress = parts.length ? parts.join(', ') : 'no change / baseline';
+        return `
+          <div class="log-card">
+            <div><strong>${item.name}</strong></div>
+            <div class="muted" style="margin-top:5px;">${prev ? formatEntry(prev) : '—'} → ${formatEntry(cur)}</div>
+            <div class="gym-line">🏢 ${gymLabel(cur.gymId)} · ${progress}</div>
+            ${cur.note ? `<div class="note-line">📝 ${cur.note}</div>` : ''}
+          </div>`;
+      }).join('');
     }
 
     function renderCalendar() {

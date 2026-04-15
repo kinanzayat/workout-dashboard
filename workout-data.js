@@ -1,5 +1,5 @@
 window.WORKOUT_DATA = {
-  "generatedAt": "2026-04-15 07:09 UTC",
+  "generatedAt": "2026-04-15 09:11 UTC",
   "lastUpdate": "2026-04-15",
   "split": [
     {
@@ -2038,6 +2038,160 @@ window.WORKOUT_DATA = {
   ],
   "lastSplitDay": 1,
   "nextSplitDay": 2,
+  "recentSession": [
+    {
+      "key": "chestPressFlatDB",
+      "name": "Chest Press (Flat DB)",
+      "group": "Chest",
+      "splitDay": 1,
+      "current": {
+        "date": "2026-04-15",
+        "exercise": "Chest Press (Flat DBs)",
+        "weightText": "26 kg each hand",
+        "weightValue": 26.0,
+        "unit": "kg",
+        "repsText": "9,7 \u274c",
+        "sets": [
+          9,
+          7
+        ],
+        "bestSet": 9,
+        "note": "+1kg each hand, -1 rep from target",
+        "gymId": "unknown"
+      },
+      "previous": {
+        "date": "2026-04-10",
+        "exercise": "Chest Press (Flat DBs)",
+        "weightText": "25 kg each hand",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "clean reps, new DB baseline format",
+        "gymId": "unknown"
+      },
+      "weightDelta": 1.0,
+      "repDelta": -1
+    },
+    {
+      "key": "lateralRaiseDB",
+      "name": "Lateral Raise (DB)",
+      "group": "Shoulders",
+      "splitDay": 1,
+      "current": {
+        "date": "2026-04-15",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "12 kg each hand",
+        "weightValue": 12.0,
+        "unit": "kg",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "+2kg each hand, -3 reps from target",
+        "gymId": "unknown"
+      },
+      "previous": {
+        "date": "2026-03-28",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "10 kg",
+        "weightValue": 10.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "+2.5kg bump, hit target",
+        "gymId": "lower_street"
+      },
+      "weightDelta": 2.0,
+      "repDelta": -3
+    },
+    {
+      "key": "squatMachine",
+      "name": "Squat Machine",
+      "group": "Legs",
+      "splitDay": 1,
+      "current": {
+        "date": "2026-04-15",
+        "exercise": "Squat Machine",
+        "weightText": "30 kg/side",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "9,7 \u274c",
+        "sets": [
+          9,
+          7
+        ],
+        "bestSet": 9,
+        "note": "same weight, +2 reps on first set",
+        "gymId": "unknown"
+      },
+      "previous": {
+        "date": "2026-04-10",
+        "exercise": "Squat Machine",
+        "weightText": "30 kg/side",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "new gym machine baseline",
+        "gymId": "upper_gym"
+      },
+      "weightDelta": 0.0,
+      "repDelta": 2
+    },
+    {
+      "key": "latPullover",
+      "name": "Lat Pullover",
+      "group": "Back",
+      "splitDay": 4,
+      "current": {
+        "date": "2026-04-15",
+        "exercise": "Lat Pullover",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "load-style reset to max stack at current machine, matched previous reps",
+        "gymId": "unknown"
+      },
+      "previous": {
+        "date": "2026-04-08",
+        "exercise": "Lat Pullover",
+        "weightText": "50 kg",
+        "weightValue": 50.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "+10kg, +1 rep",
+        "gymId": "lower_street"
+      },
+      "weightDelta": -25.0,
+      "repDelta": 0
+    }
+  ],
   "entryRules": {
     "defaultSetCount": 2,
     "assumeSecondSetSameIfMissing": true,
