@@ -1,5 +1,5 @@
 window.WORKOUT_DATA = {
-  "generatedAt": "2026-04-15 09:11 UTC",
+  "generatedAt": "2026-04-15 09:14 UTC",
   "lastUpdate": "2026-04-15",
   "split": [
     {
@@ -234,6 +234,18 @@ window.WORKOUT_DATA = {
   "exercises": {
     "chestPressFlatDB": [
       {
+        "date": "2026-02-01",
+        "exercise": "Chest Press (Flat DBs)",
+        "weightText": "40 kg",
+        "weightValue": 40.0,
+        "unit": "kg",
+        "repsText": "\u2014",
+        "sets": [],
+        "bestSet": null,
+        "note": "",
+        "gymId": "lower_street"
+      },
+      {
         "date": "2026-02-21",
         "exercise": "Chest Press (Flat DBs)",
         "weightText": "40 kg",
@@ -446,148 +458,19 @@ window.WORKOUT_DATA = {
         "gymId": "upper_gym"
       }
     ],
-    "unilateralLatPulldown": [
+    "gobletSquat": [
       {
-        "date": "2026-03-07",
-        "exercise": "Unilateral Lat Pulldown",
-        "weightText": "55 lbs (~25kg)",
-        "weightValue": 55.0,
-        "unit": "lbs",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "new exercise w/ Big Mike",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-10",
-        "exercise": "Unilateral Lat Pulldown",
-        "weightText": "30 kg",
-        "weightValue": 30.0,
-        "unit": "kg",
-        "repsText": "5/10 \u274c",
-        "sets": [
-          5,
-          5
-        ],
-        "bestSet": 5,
-        "note": "+5kg, -5 reps, alone pull-grip variation",
-        "gymId": "unknown"
-      }
-    ],
-    "deltPress": [
-      {
-        "date": "2026-03-02",
-        "exercise": "Delt Press Machine",
-        "weightText": "40 kg total",
-        "weightValue": 40.0,
-        "unit": "kg",
-        "repsText": "9/10 \u274c",
-        "sets": [
-          9,
-          9
-        ],
-        "bestSet": 9,
-        "note": "",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-08",
-        "exercise": "Delt Press Machine",
-        "weightText": "25 kg total",
-        "weightValue": 25.0,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "new baseline on this machine/variation",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-13",
-        "exercise": "Delt Press Machine",
-        "weightText": "25 kg each side",
-        "weightValue": 25.0,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "strong first set on heavier machine/load style",
-        "gymId": "unknown"
-      },
-      {
-        "date": "2026-04-13",
-        "exercise": "Delt Press Machine",
-        "weightText": "30 kg each side",
-        "weightValue": 30.0,
-        "unit": "kg",
-        "repsText": "6/10 \u274c",
-        "sets": [
-          6,
-          6
-        ],
-        "bestSet": 6,
-        "note": "tested progression, +5kg/side, -4 reps",
-        "gymId": "unknown"
-      }
-    ],
-    "latPullover": [
-      {
-        "date": "2026-03-02",
-        "exercise": "Lat Pullover",
-        "weightText": "40 kg",
-        "weightValue": 40.0,
-        "unit": "kg",
-        "repsText": "8/10 \u274c",
-        "sets": [
-          8,
-          8
-        ],
-        "bestSet": 8,
-        "note": "",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-08",
-        "exercise": "Lat Pullover",
-        "weightText": "50 kg",
-        "weightValue": 50.0,
-        "unit": "kg",
-        "repsText": "9/10 \u274c",
-        "sets": [
-          9,
-          9
-        ],
-        "bestSet": 9,
-        "note": "+10kg, +1 rep",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-15",
-        "exercise": "Lat Pullover",
+        "date": "2026-02-01",
+        "exercise": "Goblet Squat",
         "weightText": "25 kg",
         "weightValue": 25.0,
         "unit": "kg",
-        "repsText": "9/10 \u274c",
-        "sets": [
-          9,
-          9
-        ],
-        "bestSet": 9,
-        "note": "load-style reset to max stack at current machine, matched previous reps",
-        "gymId": "unknown"
-      }
-    ],
-    "gobletSquat": [
+        "repsText": "\u2014",
+        "sets": [],
+        "bestSet": null,
+        "note": "",
+        "gymId": "lower_street"
+      },
       {
         "date": "2026-02-21",
         "exercise": "Goblet Squat",
@@ -602,38 +485,6 @@ window.WORKOUT_DATA = {
         "bestSet": 10,
         "note": "+2.5 kg",
         "gymId": "lower_street"
-      }
-    ],
-    "squatMachine": [
-      {
-        "date": "2026-04-10",
-        "exercise": "Squat Machine",
-        "weightText": "30 kg/side",
-        "weightValue": 30.0,
-        "unit": "kg",
-        "repsText": "7/10 \u274c",
-        "sets": [
-          7,
-          7
-        ],
-        "bestSet": 7,
-        "note": "new gym machine baseline",
-        "gymId": "upper_gym"
-      },
-      {
-        "date": "2026-04-15",
-        "exercise": "Squat Machine",
-        "weightText": "30 kg/side",
-        "weightValue": 30.0,
-        "unit": "kg",
-        "repsText": "9,7 \u274c",
-        "sets": [
-          9,
-          7
-        ],
-        "bestSet": 9,
-        "note": "same weight, +2 reps on first set",
-        "gymId": "unknown"
       }
     ],
     "lateralRaiseCableBehind": [
@@ -665,149 +516,6 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 10,
         "note": "",
-        "gymId": "lower_street"
-      }
-    ],
-    "lateralRaiseCableFront": [
-      {
-        "date": "2026-03-07",
-        "exercise": "Lateral Raise (Cable Front)",
-        "weightText": "10 kg",
-        "weightValue": 10.0,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "new variation w/ Big Mike, harder angle",
-        "gymId": "lower_street"
-      }
-    ],
-    "lateralRaiseDB": [
-      {
-        "date": "2026-03-07",
-        "exercise": "Lateral Raise (Dumbbell)",
-        "weightText": "7.5 kg",
-        "weightValue": 7.5,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "partial ROM w/ Big Mike",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-03-09",
-        "exercise": "Lateral Raise (Dumbbell)",
-        "weightText": "7.5 kg",
-        "weightValue": 7.5,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "full ROM, solid form",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-03-16",
-        "exercise": "Lateral Raise (Dumbbell)",
-        "weightText": "7.5 kg",
-        "weightValue": 7.5,
-        "unit": "kg",
-        "repsText": "14/10 \u2705",
-        "sets": [
-          14,
-          14
-        ],
-        "bestSet": 14,
-        "note": "pushed to max, crushed it",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-03-28",
-        "exercise": "Lateral Raise (Dumbbell)",
-        "weightText": "10 kg",
-        "weightValue": 10.0,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "+2.5kg bump, hit target",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-15",
-        "exercise": "Lateral Raise (Dumbbell)",
-        "weightText": "12 kg each hand",
-        "weightValue": 12.0,
-        "unit": "kg",
-        "repsText": "7/10 \u274c",
-        "sets": [
-          7,
-          7
-        ],
-        "bestSet": 7,
-        "note": "+2kg each hand, -3 reps from target",
-        "gymId": "unknown"
-      }
-    ],
-    "lateralRaiseCable": [
-      {
-        "date": "2026-03-03",
-        "exercise": "Lateral Raise (Cable)",
-        "weightText": "20 kg",
-        "weightValue": 20.0,
-        "unit": "kg",
-        "repsText": "6/10 \u274c",
-        "sets": [
-          6,
-          6
-        ],
-        "bestSet": 6,
-        "note": "jumped too heavy",
-        "gymId": "lower_street"
-      }
-    ],
-    "cableChestFly": [
-      {
-        "date": "2026-03-07",
-        "exercise": "Cable Chest Fly (High to Low)",
-        "weightText": "25 kg",
-        "weightValue": 25.0,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "new exercise w/ Big Mike",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-03-16",
-        "exercise": "Cable Chest Fly (High to Low)",
-        "weightText": "25 kg",
-        "weightValue": 25.0,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "solid, ready to progress",
         "gymId": "lower_street"
       }
     ],
@@ -1243,83 +951,6 @@ window.WORKOUT_DATA = {
         "gymId": "upper_gym"
       }
     ],
-    "cableTriceps": [
-      {
-        "date": "2026-03-04",
-        "exercise": "Cable Triceps",
-        "weightText": "60 lbs (~27kg)",
-        "weightValue": 60.0,
-        "unit": "lbs",
-        "repsText": "7/10 \u274c",
-        "sets": [
-          7,
-          7
-        ],
-        "bestSet": 7,
-        "note": "overhead cable",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-03-10",
-        "exercise": "Cable Triceps",
-        "weightText": "30 kg",
-        "weightValue": 30.0,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "+3kg, +3 reps, hit target!",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-05",
-        "exercise": "Cable Triceps",
-        "weightText": "30 kg",
-        "weightValue": 30.0,
-        "unit": "kg",
-        "repsText": "9,7 \u274c",
-        "sets": [
-          9,
-          7
-        ],
-        "bestSet": 9,
-        "note": "same weight, -1 rep, used single pulley instead of dual",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-08",
-        "exercise": "Cable Triceps",
-        "weightText": "38.6 kg",
-        "weightValue": 38.6,
-        "unit": "kg",
-        "repsText": "9/10 \u274c",
-        "sets": [
-          9,
-          9
-        ],
-        "bestSet": 9,
-        "note": "+8.6kg, held 9 reps",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-13",
-        "exercise": "Cable Triceps",
-        "weightText": "25 kg",
-        "weightValue": 25.0,
-        "unit": "kg",
-        "repsText": "10,7 \u274c",
-        "sets": [
-          10,
-          7
-        ],
-        "bestSet": 10,
-        "note": "cable rope triceps variation",
-        "gymId": "unknown"
-      }
-    ],
     "latRow": [
       {
         "date": "2026-02-03",
@@ -1472,23 +1103,6 @@ window.WORKOUT_DATA = {
         "bestSet": 8,
         "note": "cable pec deck variation; shoulder took most of the pain, not sure chest was the limiter",
         "gymId": "lower_street"
-      }
-    ],
-    "middleCableChestPress": [
-      {
-        "date": "2026-04-12",
-        "exercise": "Middle Cable Chest Press",
-        "weightText": "10",
-        "weightValue": 10.0,
-        "unit": "",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "New Avenue Mall gym, used instead of pec deck",
-        "gymId": "avenue_mall"
       }
     ],
     "legExtension": [
@@ -1660,55 +1274,6 @@ window.WORKOUT_DATA = {
         "gymId": "avenue_mall"
       }
     ],
-    "hammerCurls": [
-      {
-        "date": "2026-04-08",
-        "exercise": "Hammer Curl (Dumbbells)",
-        "weightText": "15 kg each",
-        "weightValue": 15.0,
-        "unit": "kg",
-        "repsText": "9/10 \u274c",
-        "sets": [
-          9,
-          9
-        ],
-        "bestSet": 9,
-        "note": "new exercise",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-13",
-        "exercise": "Hammer Curl (Dumbbells)",
-        "weightText": "12.5 kg each",
-        "weightValue": 12.5,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "-2.5kg each, hit target clean",
-        "gymId": "unknown"
-      }
-    ],
-    "preacherCurl": [
-      {
-        "date": "2026-04-10",
-        "exercise": "Dumbbell Preacher Curl",
-        "weightText": "10 kg each hand",
-        "weightValue": 10.0,
-        "unit": "kg",
-        "repsText": "10/10 \u2705",
-        "sets": [
-          10,
-          10
-        ],
-        "bestSet": 10,
-        "note": "new variation, clean target hit",
-        "gymId": "unknown"
-      }
-    ],
     "preacherCurlBarbell": [
       {
         "date": "2026-02-03",
@@ -1769,6 +1334,241 @@ window.WORKOUT_DATA = {
         "bestSet": 10,
         "note": "form still wobbly, stay same weight",
         "gymId": "lower_street"
+      }
+    ],
+    "deltPress": [
+      {
+        "date": "2026-03-02",
+        "exercise": "Delt Press Machine",
+        "weightText": "40 kg total",
+        "weightValue": 40.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-08",
+        "exercise": "Delt Press Machine",
+        "weightText": "25 kg total",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "new baseline on this machine/variation",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-13",
+        "exercise": "Delt Press Machine",
+        "weightText": "25 kg each side",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "strong first set on heavier machine/load style",
+        "gymId": "unknown"
+      },
+      {
+        "date": "2026-04-13",
+        "exercise": "Delt Press Machine",
+        "weightText": "30 kg each side",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "6/10 \u274c",
+        "sets": [
+          6,
+          6
+        ],
+        "bestSet": 6,
+        "note": "tested progression, +5kg/side, -4 reps",
+        "gymId": "unknown"
+      }
+    ],
+    "latPullover": [
+      {
+        "date": "2026-03-02",
+        "exercise": "Lat Pullover",
+        "weightText": "40 kg",
+        "weightValue": 40.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-08",
+        "exercise": "Lat Pullover",
+        "weightText": "50 kg",
+        "weightValue": 50.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "+10kg, +1 rep",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-15",
+        "exercise": "Lat Pullover",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "load-style reset to max stack at current machine, matched previous reps",
+        "gymId": "unknown"
+      }
+    ],
+    "lateralRaiseCable": [
+      {
+        "date": "2026-03-03",
+        "exercise": "Lateral Raise (Cable)",
+        "weightText": "20 kg",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "6/10 \u274c",
+        "sets": [
+          6,
+          6
+        ],
+        "bestSet": 6,
+        "note": "jumped too heavy",
+        "gymId": "lower_street"
+      }
+    ],
+    "bulgarianSplitSquat": [
+      {
+        "date": "2026-03-03",
+        "exercise": "Bulgarian Split Squats",
+        "weightText": "30 kg",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "new exercise",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-03-28",
+        "exercise": "Bulgarian Split Squats",
+        "weightText": "30 kg",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "+1 rep. Doesn't feel like muscle failure \u2014 whole body fatigue. Kinan prefers squats",
+        "gymId": "lower_street"
+      }
+    ],
+    "cableTriceps": [
+      {
+        "date": "2026-03-04",
+        "exercise": "Cable Triceps",
+        "weightText": "60 lbs (~27kg)",
+        "weightValue": 60.0,
+        "unit": "lbs",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "overhead cable",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-03-10",
+        "exercise": "Cable Triceps",
+        "weightText": "30 kg",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "+3kg, +3 reps, hit target!",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-05",
+        "exercise": "Cable Triceps",
+        "weightText": "30 kg",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "9,7 \u274c",
+        "sets": [
+          9,
+          7
+        ],
+        "bestSet": 9,
+        "note": "same weight, -1 rep, used single pulley instead of dual",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-08",
+        "exercise": "Cable Triceps",
+        "weightText": "38.6 kg",
+        "weightValue": 38.6,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "+8.6kg, held 9 reps",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-13",
+        "exercise": "Cable Triceps",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "10,7 \u274c",
+        "sets": [
+          10,
+          7
+        ],
+        "bestSet": 10,
+        "note": "cable rope triceps variation",
+        "gymId": "unknown"
       }
     ],
     "upperBackRow": [
@@ -1865,6 +1665,164 @@ window.WORKOUT_DATA = {
         "gymId": "lower_street"
       }
     ],
+    "unilateralLatPulldown": [
+      {
+        "date": "2026-03-07",
+        "exercise": "Unilateral Lat Pulldown",
+        "weightText": "55 lbs (~25kg)",
+        "weightValue": 55.0,
+        "unit": "lbs",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "new exercise w/ Big Mike",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-10",
+        "exercise": "Unilateral Lat Pulldown",
+        "weightText": "30 kg",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "5/10 \u274c",
+        "sets": [
+          5,
+          5
+        ],
+        "bestSet": 5,
+        "note": "+5kg, -5 reps, alone pull-grip variation",
+        "gymId": "unknown"
+      }
+    ],
+    "lateralRaiseCableFront": [
+      {
+        "date": "2026-03-07",
+        "exercise": "Lateral Raise (Cable Front)",
+        "weightText": "10 kg",
+        "weightValue": 10.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "new variation w/ Big Mike, harder angle",
+        "gymId": "lower_street"
+      }
+    ],
+    "lateralRaiseDB": [
+      {
+        "date": "2026-03-07",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "7.5 kg",
+        "weightValue": 7.5,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "partial ROM w/ Big Mike",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-03-09",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "7.5 kg",
+        "weightValue": 7.5,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "full ROM, solid form",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-03-16",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "7.5 kg",
+        "weightValue": 7.5,
+        "unit": "kg",
+        "repsText": "14/10 \u2705",
+        "sets": [
+          14,
+          14
+        ],
+        "bestSet": 14,
+        "note": "pushed to max, crushed it",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-03-28",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "10 kg",
+        "weightValue": 10.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "+2.5kg bump, hit target",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-15",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "12 kg each hand",
+        "weightValue": 12.0,
+        "unit": "kg",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "+2kg each hand, -3 reps from target",
+        "gymId": "unknown"
+      }
+    ],
+    "cableChestFly": [
+      {
+        "date": "2026-03-07",
+        "exercise": "Cable Chest Fly (High to Low)",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "new exercise w/ Big Mike",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-03-16",
+        "exercise": "Cable Chest Fly (High to Low)",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "solid, ready to progress",
+        "gymId": "lower_street"
+      }
+    ],
     "rdls": [
       {
         "date": "2026-03-07",
@@ -1897,38 +1855,6 @@ window.WORKOUT_DATA = {
         "gymId": "lower_street"
       }
     ],
-    "bulgarianSplitSquat": [
-      {
-        "date": "2026-03-03",
-        "exercise": "Bulgarian Split Squats",
-        "weightText": "30 kg",
-        "weightValue": 30.0,
-        "unit": "kg",
-        "repsText": "8/10 \u274c",
-        "sets": [
-          8,
-          8
-        ],
-        "bestSet": 8,
-        "note": "new exercise",
-        "gymId": "lower_street"
-      },
-      {
-        "date": "2026-03-28",
-        "exercise": "Bulgarian Split Squats",
-        "weightText": "30 kg",
-        "weightValue": 30.0,
-        "unit": "kg",
-        "repsText": "9/10 \u274c",
-        "sets": [
-          9,
-          9
-        ],
-        "bestSet": 9,
-        "note": "+1 rep. Doesn't feel like muscle failure \u2014 whole body fatigue. Kinan prefers squats",
-        "gymId": "lower_street"
-      }
-    ],
     "facePull": [
       {
         "date": "2026-04-05",
@@ -1944,6 +1870,104 @@ window.WORKOUT_DATA = {
         "bestSet": 10,
         "note": "new exercise, replaced reverse peck deck due to crowded gym",
         "gymId": "lower_street"
+      }
+    ],
+    "hammerCurls": [
+      {
+        "date": "2026-04-08",
+        "exercise": "Hammer Curl (Dumbbells)",
+        "weightText": "15 kg each",
+        "weightValue": 15.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "new exercise",
+        "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-13",
+        "exercise": "Hammer Curl (Dumbbells)",
+        "weightText": "12.5 kg each",
+        "weightValue": 12.5,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "-2.5kg each, hit target clean",
+        "gymId": "unknown"
+      }
+    ],
+    "squatMachine": [
+      {
+        "date": "2026-04-10",
+        "exercise": "Squat Machine",
+        "weightText": "30 kg/side",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "new gym machine baseline",
+        "gymId": "upper_gym"
+      },
+      {
+        "date": "2026-04-15",
+        "exercise": "Squat Machine",
+        "weightText": "30 kg/side",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "9,7 \u274c",
+        "sets": [
+          9,
+          7
+        ],
+        "bestSet": 9,
+        "note": "same weight, +2 reps on first set",
+        "gymId": "unknown"
+      }
+    ],
+    "preacherCurl": [
+      {
+        "date": "2026-04-10",
+        "exercise": "Dumbbell Preacher Curl",
+        "weightText": "10 kg each hand",
+        "weightValue": 10.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "new variation, clean target hit",
+        "gymId": "unknown"
+      }
+    ],
+    "middleCableChestPress": [
+      {
+        "date": "2026-04-12",
+        "exercise": "Middle Cable Chest Press",
+        "weightText": "10",
+        "weightValue": 10.0,
+        "unit": "",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "New Avenue Mall gym, used instead of pec deck",
+        "gymId": "avenue_mall"
       }
     ]
   },
@@ -2024,6 +2048,7 @@ window.WORKOUT_DATA = {
     "2026-03-09",
     "2026-03-10",
     "2026-03-11",
+    "2026-03-15",
     "2026-03-16",
     "2026-03-17",
     "2026-03-28",
@@ -2197,5 +2222,7 @@ window.WORKOUT_DATA = {
     "assumeSecondSetSameIfMissing": true,
     "compareWithinSameGymFirst": true,
     "keepExerciseNotes": true
-  }
+  },
+  "ledgerBacked": true,
+  "sessionCount": 26
 };

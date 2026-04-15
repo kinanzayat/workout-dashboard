@@ -10,6 +10,7 @@ from workout_utils import compare_entry, rep_delta, weight_delta
 
 ROOT = Path('/home/node/clawd')
 LOG_PATH = ROOT / 'routines' / 'weight-log.md'
+LEDGER_PATH = ROOT / 'routines' / 'workout-ledger.json'
 OUT_PATH = ROOT / 'dashboard' / 'workout-data.js'
 
 EXERCISE_KEY_MAP = {
@@ -144,66 +145,41 @@ def parse_markdown_table_row(line: str):
 
 
 def main():
-    lines = LOG_PATH.read_text().splitlines()
-    current_section = None
-    in_warmup = False
+    ledger = json.loads(LEDGER_PATH.read_text())
+    sessions = ledger.get('sessions', [])
     exercises = {}
     cardio = []
     workout_days = set()
 
-    for line in lines:
-        if line.startswith('## '):
-            title = line[3:].strip()
-            in_warmup = title == 'Warmup'
-            current_section = None if in_warmup else title
-            if current_section:
-                key = EXERCISE_KEY_MAP.get(current_section)
-                if key:
-                    exercises.setdefault(key, [])
-            continue
-
-        if not line.startswith('| 2026-'):
-            continue
-
-        row = parse_markdown_table_row(line)
-        if in_warmup:
-            date, activity, duration, notes = row[:4]
-            cardio.append({
-                'date': date,
-                'activity': activity,
-                'summary': duration,
-                'notes': notes,
-            })
-            continue
-
-        if not current_section:
-            continue
-
-        key = EXERCISE_KEY_MAP.get(current_section)
-        if not key:
-            continue
-
-        date, weight_text, reps_text, diff = row[:4]
-        sets = parse_sets(reps_text)
-        if not sets:
+    for session in sessions:
+        date = session.get('date')
+        if not date:
             continue
         workout_days.add(date)
-        note_parts = []
-        if diff and diff != '—':
-            note_parts.append(diff)
-        gym_id = infer_gym(date, ' | '.join(note_parts))
-        exercises[key].append({
-            'date': date,
-            'exercise': current_section,
-            'weightText': weight_text,
-            'weightValue': first_number(weight_text),
-            'unit': infer_unit(weight_text),
-            'repsText': reps_text,
-            'sets': sets,
-            'bestSet': max(sets),
-            'note': ' | '.join(note_parts),
-            'gymId': gym_id,
-        })
+        for warmup in session.get('warmups', []):
+            cardio.append({
+                'date': date,
+                'activity': warmup.get('activity', ''),
+                'summary': warmup.get('summary', ''),
+                'notes': warmup.get('notes', ''),
+            })
+        for ex in session.get('exercises', []):
+            key = ex.get('key')
+            if not key:
+                continue
+            exercises.setdefault(key, [])
+            exercises[key].append({
+                'date': date,
+                'exercise': ex.get('sourceSection') or ex.get('name') or key,
+                'weightText': ex.get('weightText', ''),
+                'weightValue': ex.get('weightValue'),
+                'unit': ex.get('unit', ''),
+                'repsText': ex.get('repsText', ''),
+                'sets': ex.get('sets', []),
+                'bestSet': ex.get('bestSet'),
+                'note': ex.get('note', ''),
+                'gymId': ex.get('gymId', 'unknown'),
+            })
 
     exercises = {k: v for k, v in exercises.items() if v}
     last_update = max(workout_days) if workout_days else None
@@ -258,12 +234,14 @@ def main():
         'lastSplitDay': last_split_day,
         'nextSplitDay': next_split_day,
         'recentSession': recent_session,
-        'entryRules': {
+        'entryRules': ledger.get('entryRules', {
             'defaultSetCount': 2,
             'assumeSecondSetSameIfMissing': True,
             'compareWithinSameGymFirst': True,
             'keepExerciseNotes': True,
-        },
+        }),
+        'ledgerBacked': True,
+        'sessionCount': len(sessions),
     }
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
