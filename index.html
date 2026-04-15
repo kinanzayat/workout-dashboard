@@ -136,7 +136,7 @@
 <div class="container hidden" id="app">
     <header>
         <h1>🏋️ <span>Kinan's</span> Dashboard</h1>
-        <span class="last-update">Updated: 2026-03-16</span>
+        <span class="last-update">Updated: 2026-04-13</span>
     </header>
 
     <!-- Day Selector -->
@@ -213,75 +213,84 @@ const SPLIT = [
 ];
 
 const EXERCISES = {
-    chestPressFlatDB: { unit:'kg', data:[
+    chestPressFlatDB: { unit:'kg', note:'each hand', data:[
         {d:'2026-02-01',w:40,r:10},{d:'2026-02-21',w:40,r:10},{d:'2026-03-03',w:45,r:8},
-        {d:'2026-03-09',w:45,r:10},{d:'2026-03-16',w:50,r:8}
+        {d:'2026-03-09',w:45,r:10},{d:'2026-03-16',w:50,r:8},{d:'2026-03-28',w:50,r:9},
+        {d:'2026-04-10',w:25,r:10}
     ]},
     latPulldown: { unit:'kg', data:[
         {d:'2026-02-01',w:45.5,r:8},{d:'2026-02-21',w:45.5,r:9},{d:'2026-03-03',w:45.5,r:10},
-        {d:'2026-03-09',w:54,r:7},{d:'2026-03-16',w:54,r:9}
+        {d:'2026-03-09',w:54,r:7},{d:'2026-03-16',w:54,r:9},{d:'2026-03-28',w:54,r:10},
+        {d:'2026-04-13',w:50,r:10}
     ]},
-    squats: { unit:'kg', data:[
-        {d:'2026-02-01',w:25,r:10},{d:'2026-02-21',w:27.5,r:10},{d:'2026-03-03',w:30,r:8}
+    squats: { unit:'kg', note:'per side', data:[
+        {d:'2026-02-01',w:25,r:10},{d:'2026-02-21',w:27.5,r:10},{d:'2026-03-03',w:30,r:8},
+        {d:'2026-03-28',w:30,r:9},{d:'2026-04-10',w:30,r:7}
     ]},
     lateralRaiseDB: { unit:'kg', data:[
-        {d:'2026-03-07',w:7.5,r:10},{d:'2026-03-09',w:7.5,r:10},{d:'2026-03-16',w:7.5,r:14}
+        {d:'2026-03-07',w:7.5,r:10},{d:'2026-03-09',w:7.5,r:10},{d:'2026-03-16',w:7.5,r:14},
+        {d:'2026-03-28',w:10,r:10}
     ]},
-    preacherCurl: { unit:'kg', note:'+ bar', data:[
+    preacherCurl: { unit:'kg', note:'each hand', data:[
         {d:'2026-02-03',w:10,r:5},{d:'2026-02-21',w:10,r:7},{d:'2026-03-09',w:7.5,r:10},
-        {d:'2026-03-16',w:7.5,r:10}
+        {d:'2026-03-16',w:7.5,r:10},{d:'2026-04-10',w:10,r:10}
     ]},
-    inclineChestPress: { unit:'kg', note:'Smith total', data:[
-        {d:'2026-02-02',w:40,r:9},{d:'2026-02-23',w:50,r:7},{d:'2026-03-04',w:50,r:8},
-        {d:'2026-03-07',w:65,r:6},{d:'2026-03-10',w:55,r:7}
+    inclineChestPress: { unit:'kg', note:'per side (Smith)', data:[
+        {d:'2026-02-02',w:20,r:9},{d:'2026-02-23',w:25,r:7},{d:'2026-03-04',w:25,r:8},
+        {d:'2026-03-07',w:25,r:6},{d:'2026-03-10',w:20,r:7},{d:'2026-03-17',w:20,r:8},
+        {d:'2026-04-05',w:25,r:7},{d:'2026-04-11',w:20,r:5}
     ]},
-    upperBackRow: { unit:'kg', data:[
-        {d:'2026-03-04',w:80,r:9},{d:'2026-03-10',w:80,r:10}
+    upperBackRow: { unit:'', note:'machine', data:[
+        {d:'2026-03-04',w:80,r:9},{d:'2026-03-10',w:80,r:10},{d:'2026-04-11',w:70,r:10},
+        {d:'2026-04-12',w:65,r:7}
     ]},
     legCurl: { unit:'kg', data:[
-        {d:'2026-02-02',w:45,r:9},{d:'2026-03-04',w:50,r:8},{d:'2026-03-10',w:50,r:10}
+        {d:'2026-02-02',w:45,r:9},{d:'2026-03-04',w:50,r:8},{d:'2026-03-10',w:50,r:10},
+        {d:'2026-04-05',w:55,r:8},{d:'2026-04-11',w:105,r:7}
     ]},
     reversePecDeck: { unit:'kg', data:[
-        {d:'2026-02-02',w:45.5,r:7},{d:'2026-03-04',w:45.5,r:7},{d:'2026-03-10',w:45.5,r:5}
+        {d:'2026-02-02',w:45.5,r:7},{d:'2026-03-04',w:45.5,r:7},{d:'2026-03-10',w:45.5,r:5},
+        {d:'2026-03-17',w:45.5,r:10},{d:'2026-04-05',w:45.5,r:5}
     ]},
     overheadTricepsCable: { unit:'kg', data:[
-        {d:'2026-03-04',w:27,r:7},{d:'2026-03-10',w:30,r:10}
+        {d:'2026-03-04',w:27,r:7},{d:'2026-03-17',w:30,r:6}
     ]},
     calfRaises: { unit:'kg', data:[] },
     pecDeck: { unit:'kg', data:[
         {d:'2026-02-03',w:60,r:8},{d:'2026-02-25',w:60,r:10},{d:'2026-03-05',w:65,r:7},
-        {d:'2026-03-11',w:52,r:8},{d:'2026-03-19',w:52,r:10}
+        {d:'2026-03-11',w:52,r:8},{d:'2026-04-07',w:25,r:8}
     ]},
     latRow: { unit:'kg', data:[
         {d:'2026-02-03',w:80,r:9},{d:'2026-02-25',w:80,r:10},{d:'2026-03-05',w:90,r:8},
-        {d:'2026-03-11',w:90,r:9},{d:'2026-03-19',w:90,r:10}
+        {d:'2026-03-11',w:90,r:9},{d:'2026-04-07',w:100,r:10}
     ]},
-    legExtension: { unit:'lbs', data:[
-        {d:'2026-02-03',w:120,r:10},{d:'2026-02-23',w:120,r:9},{d:'2026-03-05',w:120,r:10},
-        {d:'2026-03-11',w:130,r:8},{d:'2026-03-19',w:130,r:10}
+    legExtension: { unit:'kg', data:[
+        {d:'2026-02-03',w:54,r:10},{d:'2026-02-23',w:54,r:9},{d:'2026-03-05',w:54,r:10},
+        {d:'2026-03-11',w:59,r:8},{d:'2026-04-07',w:64,r:11},{d:'2026-04-12',w:75,r:8}
     ]},
-    cableVBar: { unit:'lbs', data:[
+    cableVBar: { unit:'', data:[
         {d:'2026-02-03',w:55,r:9},{d:'2026-02-25',w:60,r:9},{d:'2026-03-05',w:60,r:9},
-        {d:'2026-03-19',w:60,r:10}
+        {d:'2026-04-07',w:60,r:10},{d:'2026-04-12',w:35,r:8}
     ]},
     bicepCurl: { unit:'kg', data:[
         {d:'2026-02-01',w:25,r:8},{d:'2026-02-25',w:25,r:9},{d:'2026-03-05',w:25,r:10},
-        {d:'2026-03-11',w:25,r:10}
+        {d:'2026-03-11',w:25,r:10},{d:'2026-04-12',w:25,r:10}
     ]},
     deltPress: { unit:'kg', note:'per side', data:[
-        {d:'2026-03-02',w:40,r:9},{d:'2026-03-26',w:25,r:9}
+        {d:'2026-03-02',w:40,r:9},{d:'2026-04-08',w:25,r:10},{d:'2026-04-13',w:30,r:6}
     ]},
     latPullover: { unit:'kg', data:[
-        {d:'2026-03-02',w:40,r:8},{d:'2026-03-26',w:54.5,r:9}
+        {d:'2026-03-02',w:40,r:8},{d:'2026-04-08',w:50,r:9}
     ]},
     rdls: { unit:'kg', note:'each hand', data:[
-        {d:'2026-03-07',w:12.5,r:10},{d:'2026-03-26',w:20,r:6}
+        {d:'2026-03-07',w:12.5,r:10},{d:'2026-04-08',w:20,r:10}
     ]},
     cableTriceps: { unit:'kg', data:[
-        {d:'2026-03-04',w:27,r:7},{d:'2026-03-10',w:30,r:10},{d:'2026-03-26',w:38.6,r:8}
+        {d:'2026-03-04',w:27,r:7},{d:'2026-03-10',w:30,r:10},{d:'2026-04-05',w:30,r:9},
+        {d:'2026-04-08',w:38.6,r:9},{d:'2026-04-13',w:25,r:10}
     ]},
     hammerCurls: { unit:'kg', note:'each hand', data:[
-        {d:'2026-03-26',w:15,r:8}
+        {d:'2026-04-08',w:15,r:9},{d:'2026-04-13',w:12.5,r:10}
     ]},
     cableChestFly: { unit:'kg', data:[
         {d:'2026-03-07',w:25,r:10},{d:'2026-03-16',w:25,r:10}
@@ -294,20 +303,19 @@ const CARDIO = [
     {d:'2026-03-11',a:'Cycling',dur:'9:23',dist:'4.78 km',cal:'79 kcal',note:'lvl 4, 169 bpm'},
     {d:'2026-03-10',a:'Cycling',dur:'10:11',dist:'5.02 km',cal:'84 kcal',note:'lvl 6, 169 bpm'},
     {d:'2026-03-09',a:'Walk+Cycle',dur:'45+5:15',dist:'2.49 km',cal:'39 kcal',note:'138 bpm'},
-    {d:'2026-03-05',a:'Cycling',dur:'10:17',dist:'5.01 km',cal:'81 kcal',note:'lvl 5'},
-    {d:'2026-03-02',a:'Cycling',dur:'10:01',dist:'4.65 km',cal:'89 kcal',note:'lvl 6'},
 ];
 
 const WORKOUT_DAYS = [
     '2026-02-01','2026-02-02','2026-02-03','2026-02-21','2026-02-23','2026-02-25',
     '2026-03-02','2026-03-03','2026-03-04','2026-03-05','2026-03-07','2026-03-09',
-    '2026-03-10','2026-03-11','2026-03-14','2026-03-15','2026-03-16','2026-03-19','2026-03-26'
+    '2026-03-10','2026-03-11','2026-03-14','2026-03-15','2026-03-16','2026-03-19','2026-03-26',
+    '2026-03-28','2026-04-05','2026-04-07','2026-04-08','2026-04-10','2026-04-11','2026-04-12','2026-04-13'
 ];
 
 // Last completed day: Day 1 on Mar 16. Next = Day 2
-const LAST_DAY_INDEX = 0; // 0-based: Day 1 was last
+const LAST_DAY_INDEX = 3; // 0-based: Day 4 was last
 
-let selectedDay = 1; // default to Day 2 (next up)
+let selectedDay = 0; // default to Day 1 (next up)
 
 function init() {
     renderDaySelector();
@@ -345,7 +353,7 @@ function renderToday(dayIdx) {
     const sec = document.getElementById('todaySection');
     let html = `<div class="today-header">
         <div class="today-title">🎯 Day ${split.day} — ${split.label}</div>
-        <div class="today-badge">${dayIdx === 1 ? 'NEXT UP' : 'Day ' + split.day}</div>
+        <div class="today-badge">${dayIdx === selectedDay ? 'NEXT UP' : 'Day ' + split.day}</div>
     </div>`;
 
     split.exercises.forEach(ex => {
@@ -407,7 +415,7 @@ function renderStats() {
         const wk = Math.floor((dt - new Date('2026-01-05')) / (7*86400000));
         weeks[wk] = (weeks[wk]||0)+1;
     });
-    const currWk = Math.floor((new Date('2026-03-16') - new Date('2026-01-05')) / (7*86400000));
+    const currWk = Math.floor((new Date('2026-04-15') - new Date('2026-01-05')) / (7*86400000));
     let streak = 0;
     for (let w = currWk; w >= currWk - 20; w--) {
         if (weeks[w] && weeks[w] >= 2) streak++; else if (w < currWk) break;
@@ -436,7 +444,7 @@ function renderCardio() {
 
 function renderCalendar() {
     const cal = document.getElementById('calendar');
-    const today = new Date('2026-03-17');
+    const today = new Date('2026-04-15');
     ['S','M','T','W','T','F','S'].forEach(d => {
         cal.innerHTML += `<div class="hdr">${d}</div>`;
     });
@@ -448,7 +456,7 @@ function renderCalendar() {
         const d = new Date(start); d.setDate(d.getDate() + i);
         const ds = d.toISOString().split('T')[0];
         const isW = WORKOUT_DAYS.includes(ds);
-        const isToday = ds === '2026-03-17';
+        const isToday = ds === '2026-04-15';
         cal.innerHTML += `<div class="day ${isW?'active':''} ${isToday?'today':''}">${d.getDate()}</div>`;
     }
 }
