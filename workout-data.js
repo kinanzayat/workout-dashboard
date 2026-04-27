@@ -1,6 +1,6 @@
 window.WORKOUT_DATA = {
-  "generatedAt": "2026-04-15 09:14 UTC",
-  "lastUpdate": "2026-04-15",
+  "generatedAt": "2026-04-27 06:49 UTC",
+  "lastUpdate": "2026-04-27",
   "split": [
     {
       "day": 1,
@@ -8,10 +8,14 @@ window.WORKOUT_DATA = {
       "keys": [
         "chestPressFlatDB",
         "latPulldown",
+        "unilateralLatPulldown",
         "squatMachine",
         "gobletSquat",
         "bulgarianSplitSquat",
         "lateralRaiseDB",
+        "lateralRaiseCable",
+        "lateralRaiseCableBehind",
+        "lateralRaiseCableFront",
         "preacherCurl",
         "preacherCurlBarbell",
         "cableChestFly"
@@ -28,7 +32,8 @@ window.WORKOUT_DATA = {
         "reversePecDeck",
         "facePull",
         "overheadTricepsCable",
-        "overheadTricepDB"
+        "overheadTricepDB",
+        "singleArmCableTriceps"
       ]
     },
     {
@@ -36,11 +41,13 @@ window.WORKOUT_DATA = {
       "label": "Pec / Lat / Quads",
       "keys": [
         "pecDeck",
+        "inclineDBFly",
         "middleCableChestPress",
         "latRow",
         "legExtension",
         "cableVBar",
-        "bicepCurl"
+        "bicepCurl",
+        "bicepCurlCable"
       ]
     },
     {
@@ -155,6 +162,11 @@ window.WORKOUT_DATA = {
       "group": "Arms",
       "splitDay": 2
     },
+    "singleArmCableTriceps": {
+      "name": "Single-Arm Cable Triceps",
+      "group": "Arms",
+      "splitDay": 2
+    },
     "pecDeck": {
       "name": "Pec Deck",
       "group": "Chest",
@@ -214,6 +226,16 @@ window.WORKOUT_DATA = {
       "name": "Cable Chest Fly",
       "group": "Chest",
       "splitDay": 1
+    },
+    "inclineDBFly": {
+      "name": "Incline Dumbbell Fly",
+      "group": "Chest",
+      "splitDay": 3
+    },
+    "bicepCurlCable": {
+      "name": "Bicep Curl (Cable Machine)",
+      "group": "Arms",
+      "splitDay": 3
     },
     "lateralRaiseCableBehind": {
       "name": "Lateral Raise (Cable Behind)",
@@ -333,7 +355,7 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 10,
         "note": "clean reps, new DB baseline format",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
       },
       {
         "date": "2026-04-15",
@@ -348,7 +370,37 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 9,
         "note": "+1kg each hand, -1 rep from target",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-20",
+        "exercise": "Chest Press (Flat DBs)",
+        "weightText": "28 kg each hand",
+        "weightValue": 28.0,
+        "unit": "kg",
+        "repsText": "9,6 \u274c",
+        "sets": [
+          9,
+          6
+        ],
+        "bestSet": 9,
+        "note": "+2kg each hand, matched first-set effort but second set dropped hard",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-26",
+        "exercise": "Chest Press (Flat DBs)",
+        "weightText": "28 kg each hand",
+        "weightValue": 28.0,
+        "unit": "kg",
+        "repsText": "5/10 \u274c",
+        "sets": [
+          5,
+          5
+        ],
+        "bestSet": 5,
+        "note": "same weight, big drop in reps from last session",
+        "gymId": "avenue_mall"
       }
     ],
     "latPulldown": [
@@ -455,7 +507,37 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 10,
         "note": "new gym/load style, hit target; planning to swap to lat pullover next time",
-        "gymId": "upper_gym"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-20",
+        "exercise": "Lat Pulldown",
+        "weightText": "55 kg",
+        "weightValue": 55.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "tested progression, +5kg, -2 reps from target",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-26",
+        "exercise": "Lat Pulldown",
+        "weightText": "50 kg",
+        "weightValue": 50.0,
+        "unit": "kg",
+        "repsText": "10,7 \u274c",
+        "sets": [
+          10,
+          7
+        ],
+        "bestSet": 10,
+        "note": "dropped back 5kg, first set hit target, second set 7",
+        "gymId": "avenue_mall"
       }
     ],
     "gobletSquat": [
@@ -594,6 +676,21 @@ window.WORKOUT_DATA = {
         "bestSet": 10,
         "note": "New Avenue Mall gym, matched target",
         "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-22",
+        "exercise": "Bicep Curl (Barbell)",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "10,8 \u274c",
+        "sets": [
+          10,
+          8
+        ],
+        "bestSet": 10,
+        "note": "Avenue Mall gym, strong first set, second set dropped by 2 reps",
+        "gymId": "avenue_mall"
       }
     ],
     "inclineChestPress": [
@@ -729,8 +826,38 @@ window.WORKOUT_DATA = {
           5
         ],
         "bestSet": 5,
-        "note": "upper gym baseline",
-        "gymId": "upper_gym"
+        "note": "Avenue Mall gym baseline; dropped to 15kg/side after top set and continued to failure",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-21",
+        "exercise": "Incline Chest Press (Barbell/Smith)",
+        "weightText": "20 kg/side (Smith, 30\u00b0)",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "6,5 \u274c",
+        "sets": [
+          6,
+          5
+        ],
+        "bestSet": 6,
+        "note": "Avenue Mall gym, +1 rep on top set; backoff to 15kg/side to failure after each set",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-27",
+        "exercise": "Incline Chest Press (Barbell/Smith)",
+        "weightText": "20 kg/side (Smith, 30\u00b0)",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "Avenue Mall gym, same load, +2 reps on top set; max set 8",
+        "gymId": "avenue_mall"
       }
     ],
     "upperRowCable": [
@@ -817,14 +944,44 @@ window.WORKOUT_DATA = {
         "weightText": "105 weight",
         "weightValue": 105.0,
         "unit": "",
-        "repsText": "7/10 \u274c",
+        "repsText": "10/10 \u2705",
         "sets": [
-          7,
-          7
+          10,
+          10
         ],
-        "bestSet": 7,
-        "note": "upper gym machine baseline",
-        "gymId": "upper_gym"
+        "bestSet": 10,
+        "note": "Avenue Mall gym machine baseline",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-21",
+        "exercise": "Leg Curl (Machine)",
+        "weightText": "120 weight",
+        "weightValue": 120.0,
+        "unit": "",
+        "repsText": "6/10 \u274c",
+        "sets": [
+          6,
+          6
+        ],
+        "bestSet": 6,
+        "note": "Avenue Mall gym, tested progression, +15 weight",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-27",
+        "exercise": "Leg Curl (Machine)",
+        "weightText": "120 weight",
+        "weightValue": 120.0,
+        "unit": "",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "Avenue Mall gym, same load, +2 reps on top set; max set 8",
+        "gymId": "avenue_mall"
       }
     ],
     "reversePecDeck": [
@@ -902,6 +1059,21 @@ window.WORKOUT_DATA = {
         "bestSet": 5,
         "note": "same weight, -5 reps, **ISSUE: needs coach review**",
         "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-11",
+        "exercise": "Reverse Peck Deck",
+        "weightText": "15 kg",
+        "weightValue": 15.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "Avenue Mall gym machine baseline",
+        "gymId": "avenue_mall"
       }
     ],
     "overheadTricepDB": [
@@ -934,21 +1106,6 @@ window.WORKOUT_DATA = {
         "bestSet": 7,
         "note": "+2.5 kg, -2 reps",
         "gymId": "lower_street"
-      },
-      {
-        "date": "2026-04-11",
-        "exercise": "Overhead Tricep Extension (Dumbbell)",
-        "weightText": "17.5 kg",
-        "weightValue": 17.5,
-        "unit": "kg",
-        "repsText": "8/10 \u274c",
-        "sets": [
-          8,
-          8
-        ],
-        "bestSet": 8,
-        "note": "upper gym",
-        "gymId": "upper_gym"
       }
     ],
     "latRow": [
@@ -1026,6 +1183,51 @@ window.WORKOUT_DATA = {
         "bestSet": 10,
         "note": "+10 kg, +1 rep \u2014 loved this exercise",
         "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-17",
+        "exercise": "Lat Row (Cable)",
+        "weightText": "65 kg",
+        "weightValue": 65.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "Avenue Mall gym baseline",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-21",
+        "exercise": "Lat Row (Cable)",
+        "weightText": "70 kg",
+        "weightValue": 70.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "Avenue Mall gym, +5kg and hit target",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-22",
+        "exercise": "Lat Row (Cable)",
+        "weightText": "70 kg",
+        "weightValue": 70.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "Avenue Mall gym, -1 rep from last session at same weight",
+        "gymId": "avenue_mall"
       }
     ],
     "pecDeck": [
@@ -1103,6 +1305,21 @@ window.WORKOUT_DATA = {
         "bestSet": 8,
         "note": "cable pec deck variation; shoulder took most of the pain, not sure chest was the limiter",
         "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-22",
+        "exercise": "Pec Deck",
+        "weightText": "20 kg",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "Avenue Mall gym baseline on current pec deck variation",
+        "gymId": "avenue_mall"
       }
     ],
     "legExtension": [
@@ -1195,6 +1412,36 @@ window.WORKOUT_DATA = {
         "bestSet": 8,
         "note": "New Avenue Mall gym",
         "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-17",
+        "exercise": "Leg Extension (Machine)",
+        "weightText": "75 kg",
+        "weightValue": 75.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "same weight, +1 rep",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-22",
+        "exercise": "Leg Extension (Machine)",
+        "weightText": "75 kg",
+        "weightValue": 75.0,
+        "unit": "kg",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "Avenue Mall gym, -2 reps from last session",
+        "gymId": "avenue_mall"
       }
     ],
     "cableVBar": [
@@ -1271,6 +1518,36 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 8,
         "note": "New Avenue Mall gym",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-17",
+        "exercise": "Cable V-Bar Pushdown",
+        "weightText": "32.5 kg",
+        "weightValue": 32.5,
+        "unit": "kg",
+        "repsText": "6/10 \u274c",
+        "sets": [
+          6,
+          6
+        ],
+        "bestSet": 6,
+        "note": "-2.5 kg, -2 reps from last logged V-bar session",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-22",
+        "exercise": "Cable V-Bar Pushdown",
+        "weightText": "32.5 kg",
+        "weightValue": 32.5,
+        "unit": "kg",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "Avenue Mall gym, +1 rep at same weight",
         "gymId": "avenue_mall"
       }
     ],
@@ -1380,7 +1657,7 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 10,
         "note": "strong first set on heavier machine/load style",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
       },
       {
         "date": "2026-04-13",
@@ -1395,7 +1672,37 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 6,
         "note": "tested progression, +5kg/side, -4 reps",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-19",
+        "exercise": "Delt Press Machine",
+        "weightText": "30 kg each side",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "+1 rep from last 30kg/side attempt",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-23",
+        "exercise": "Delt Press Machine",
+        "weightText": "55 kg total",
+        "weightValue": 55.0,
+        "unit": "kg",
+        "repsText": "9,7 \u274c",
+        "sets": [
+          9,
+          7
+        ],
+        "bestSet": 9,
+        "note": "new shoulder press machine because old one is gone, new baseline",
+        "gymId": "avenue_mall"
       }
     ],
     "latPullover": [
@@ -1442,7 +1749,37 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 9,
         "note": "load-style reset to max stack at current machine, matched previous reps",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-19",
+        "exercise": "Lat Pullover",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "-1 rep from last session on same machine/load style",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-23",
+        "exercise": "Lat Pullover",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "9,7 \u274c",
+        "sets": [
+          9,
+          7
+        ],
+        "bestSet": 9,
+        "note": "+1 rep on top set, second set tracked too",
+        "gymId": "avenue_mall"
       }
     ],
     "lateralRaiseCable": [
@@ -1568,7 +1905,37 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 10,
         "note": "cable rope triceps variation",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-19",
+        "exercise": "Cable Triceps",
+        "weightText": "20 kg",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "rope variation, dropped weight, clean max set",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-23",
+        "exercise": "Cable Triceps",
+        "weightText": "25 kg",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "cable triceps extension, +5kg and +1 rep vs last logged rope set",
+        "gymId": "avenue_mall"
       }
     ],
     "upperBackRow": [
@@ -1614,8 +1981,8 @@ window.WORKOUT_DATA = {
           10
         ],
         "bestSet": 10,
-        "note": "upper gym machine, one-hand variation baseline",
-        "gymId": "upper_gym"
+        "note": "Avenue Mall gym machine, one-hand variation baseline",
+        "gymId": "avenue_mall"
       },
       {
         "date": "2026-04-12",
@@ -1630,6 +1997,21 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 7,
         "note": "New Avenue Mall gym",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-27",
+        "exercise": "Upper Back Row (Machine)",
+        "weightText": "75 kg",
+        "weightValue": 75.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "Avenue Mall gym, upper row, hit target at 75kg",
         "gymId": "avenue_mall"
       }
     ],
@@ -1663,6 +2045,36 @@ window.WORKOUT_DATA = {
         "bestSet": 6,
         "note": "+3kg, -1 rep, triceps felt weak",
         "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-11",
+        "exercise": "Overhead Triceps (Cable)",
+        "weightText": "17.5 kg",
+        "weightValue": 17.5,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "Avenue Mall gym rope variation baseline",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-21",
+        "exercise": "Overhead Triceps (Cable)",
+        "weightText": "17.5 kg",
+        "weightValue": 17.5,
+        "unit": "kg",
+        "repsText": "6/10 \u274c",
+        "sets": [
+          6,
+          6
+        ],
+        "bestSet": 6,
+        "note": "same weight, -2 reps from Avenue Mall baseline",
+        "gymId": "avenue_mall"
       }
     ],
     "unilateralLatPulldown": [
@@ -1694,7 +2106,7 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 5,
         "note": "+5kg, -5 reps, alone pull-grip variation",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
       }
     ],
     "lateralRaiseCableFront": [
@@ -1788,7 +2200,37 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 7,
         "note": "+2kg each hand, -3 reps from target",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-20",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "12 kg each hand",
+        "weightValue": 12.0,
+        "unit": "kg",
+        "repsText": "7,10 \u2705",
+        "sets": [
+          7,
+          10
+        ],
+        "bestSet": 10,
+        "note": "matched first set, second set hit target; form uncertain",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-26",
+        "exercise": "Lateral Raise (Dumbbell)",
+        "weightText": "12 kg each hand",
+        "weightValue": 12.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "hit target, considering switch to cable for better form",
+        "gymId": "avenue_mall"
       }
     ],
     "cableChestFly": [
@@ -1821,6 +2263,21 @@ window.WORKOUT_DATA = {
         "bestSet": 10,
         "note": "solid, ready to progress",
         "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-26",
+        "exercise": "Cable Chest Fly (High to Low)",
+        "weightText": "15 kg",
+        "weightValue": 15.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "cable chest variation used instead of squats after 15 km run and rest day",
+        "gymId": "avenue_mall"
       }
     ],
     "rdls": [
@@ -1853,6 +2310,36 @@ window.WORKOUT_DATA = {
         "bestSet": 10,
         "note": "+7.5kg each, hit target",
         "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-19",
+        "exercise": "RDLs (Dumbbells)",
+        "weightText": "25 kg each",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "10,7 \u274c",
+        "sets": [
+          10,
+          7
+        ],
+        "bestSet": 10,
+        "note": "+5kg each, strong first set, forearms/grip were the limiter; straps needed",
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-23",
+        "exercise": "RDLs (Dumbbells)",
+        "weightText": "25 kg each",
+        "weightValue": 25.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "same weight, lower reps today",
+        "gymId": "avenue_mall"
       }
     ],
     "facePull": [
@@ -1870,6 +2357,21 @@ window.WORKOUT_DATA = {
         "bestSet": 10,
         "note": "new exercise, replaced reverse peck deck due to crowded gym",
         "gymId": "lower_street"
+      },
+      {
+        "date": "2026-04-27",
+        "exercise": "Face Pull (Cable)",
+        "weightText": "20 kg",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "Avenue Mall gym baseline for face pulls; max set 10",
+        "gymId": "avenue_mall"
       }
     ],
     "hammerCurls": [
@@ -1901,7 +2403,22 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 10,
         "note": "-2.5kg each, hit target clean",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-19",
+        "exercise": "Hammer Curl (Dumbbells)",
+        "weightText": "15 kg each",
+        "weightValue": 15.0,
+        "unit": "kg",
+        "repsText": "7/10 \u274c",
+        "sets": [
+          7,
+          7
+        ],
+        "bestSet": 7,
+        "note": "+2.5kg each, -3 reps from target",
+        "gymId": "avenue_mall"
       }
     ],
     "squatMachine": [
@@ -1918,7 +2435,7 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 7,
         "note": "new gym machine baseline",
-        "gymId": "upper_gym"
+        "gymId": "avenue_mall"
       },
       {
         "date": "2026-04-15",
@@ -1933,7 +2450,22 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 9,
         "note": "same weight, +2 reps on first set",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-20",
+        "exercise": "Squat Machine",
+        "weightText": "30 kg/side",
+        "weightValue": 30.0,
+        "unit": "kg",
+        "repsText": "10,5 \u274c",
+        "sets": [
+          10,
+          5
+        ],
+        "bestSet": 10,
+        "note": "first set hit target, second set dropped; calves hurting, form uncertain",
+        "gymId": "avenue_mall"
       }
     ],
     "preacherCurl": [
@@ -1950,7 +2482,22 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 10,
         "note": "new variation, clean target hit",
-        "gymId": "unknown"
+        "gymId": "avenue_mall"
+      },
+      {
+        "date": "2026-04-26",
+        "exercise": "Dumbbell Preacher Curl",
+        "weightText": "10 kg each hand",
+        "weightValue": 10.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "matched target on preacher curl dumbbell variation",
+        "gymId": "avenue_mall"
       }
     ],
     "middleCableChestPress": [
@@ -1967,6 +2514,57 @@ window.WORKOUT_DATA = {
         ],
         "bestSet": 10,
         "note": "New Avenue Mall gym, used instead of pec deck",
+        "gymId": "avenue_mall"
+      }
+    ],
+    "inclineDBFly": [
+      {
+        "date": "2026-04-17",
+        "exercise": "Incline Dumbbell Fly",
+        "weightText": "17.5 kg",
+        "weightValue": 17.5,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "Avenue Mall gym; replaced planned cable chest movement for Day 3",
+        "gymId": "avenue_mall"
+      }
+    ],
+    "bicepCurlCable": [
+      {
+        "date": "2026-04-17",
+        "exercise": "Bicep Curl (Cable Machine)",
+        "weightText": "20 kg",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "9/10 \u274c",
+        "sets": [
+          9,
+          9
+        ],
+        "bestSet": 9,
+        "note": "Avenue Mall gym baseline",
+        "gymId": "avenue_mall"
+      }
+    ],
+    "singleArmCableTriceps": [
+      {
+        "date": "2026-04-27",
+        "exercise": "Single-Arm Cable Triceps",
+        "weightText": "10 kg one hand",
+        "weightValue": 10.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "Avenue Mall gym, new one-hand cable triceps exercise baseline; max set 10 each side",
         "gymId": "avenue_mall"
       }
     ]
@@ -2059,36 +2657,29 @@ window.WORKOUT_DATA = {
     "2026-04-11",
     "2026-04-12",
     "2026-04-13",
-    "2026-04-15"
+    "2026-04-15",
+    "2026-04-17",
+    "2026-04-19",
+    "2026-04-20",
+    "2026-04-21",
+    "2026-04-22",
+    "2026-04-23",
+    "2026-04-26",
+    "2026-04-27"
   ],
-  "lastSplitDay": 1,
-  "nextSplitDay": 2,
+  "lastSplitDay": 2,
+  "nextSplitDay": 3,
   "recentSession": [
     {
-      "key": "chestPressFlatDB",
-      "name": "Chest Press (Flat DB)",
-      "group": "Chest",
-      "splitDay": 1,
+      "key": "facePull",
+      "name": "Face Pull",
+      "group": "Shoulders",
+      "splitDay": 2,
       "current": {
-        "date": "2026-04-15",
-        "exercise": "Chest Press (Flat DBs)",
-        "weightText": "26 kg each hand",
-        "weightValue": 26.0,
-        "unit": "kg",
-        "repsText": "9,7 \u274c",
-        "sets": [
-          9,
-          7
-        ],
-        "bestSet": 9,
-        "note": "+1kg each hand, -1 rep from target",
-        "gymId": "unknown"
-      },
-      "previous": {
-        "date": "2026-04-10",
-        "exercise": "Chest Press (Flat DBs)",
-        "weightText": "25 kg each hand",
-        "weightValue": 25.0,
+        "date": "2026-04-27",
+        "exercise": "Face Pull (Cable)",
+        "weightText": "20 kg",
+        "weightValue": 20.0,
         "unit": "kg",
         "repsText": "10/10 \u2705",
         "sets": [
@@ -2096,36 +2687,112 @@ window.WORKOUT_DATA = {
           10
         ],
         "bestSet": 10,
-        "note": "clean reps, new DB baseline format",
-        "gymId": "unknown"
-      },
-      "weightDelta": 1.0,
-      "repDelta": -1
-    },
-    {
-      "key": "lateralRaiseDB",
-      "name": "Lateral Raise (DB)",
-      "group": "Shoulders",
-      "splitDay": 1,
-      "current": {
-        "date": "2026-04-15",
-        "exercise": "Lateral Raise (Dumbbell)",
-        "weightText": "12 kg each hand",
-        "weightValue": 12.0,
-        "unit": "kg",
-        "repsText": "7/10 \u274c",
-        "sets": [
-          7,
-          7
-        ],
-        "bestSet": 7,
-        "note": "+2kg each hand, -3 reps from target",
-        "gymId": "unknown"
+        "note": "Avenue Mall gym baseline for face pulls; max set 10",
+        "gymId": "avenue_mall"
       },
       "previous": {
-        "date": "2026-03-28",
-        "exercise": "Lateral Raise (Dumbbell)",
-        "weightText": "10 kg",
+        "date": "2026-04-05",
+        "exercise": "Face Pull (Cable)",
+        "weightText": "45 kg",
+        "weightValue": 45.0,
+        "unit": "kg",
+        "repsText": "10/10 \u2705",
+        "sets": [
+          10,
+          10
+        ],
+        "bestSet": 10,
+        "note": "new exercise, replaced reverse peck deck due to crowded gym",
+        "gymId": "lower_street"
+      },
+      "weightDelta": -25.0,
+      "repDelta": 0
+    },
+    {
+      "key": "inclineChestPress",
+      "name": "Incline Chest Press",
+      "group": "Chest",
+      "splitDay": 2,
+      "current": {
+        "date": "2026-04-27",
+        "exercise": "Incline Chest Press (Barbell/Smith)",
+        "weightText": "20 kg/side (Smith, 30\u00b0)",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "Avenue Mall gym, same load, +2 reps on top set; max set 8",
+        "gymId": "avenue_mall"
+      },
+      "previous": {
+        "date": "2026-04-21",
+        "exercise": "Incline Chest Press (Barbell/Smith)",
+        "weightText": "20 kg/side (Smith, 30\u00b0)",
+        "weightValue": 20.0,
+        "unit": "kg",
+        "repsText": "6,5 \u274c",
+        "sets": [
+          6,
+          5
+        ],
+        "bestSet": 6,
+        "note": "Avenue Mall gym, +1 rep on top set; backoff to 15kg/side to failure after each set",
+        "gymId": "avenue_mall"
+      },
+      "weightDelta": 0.0,
+      "repDelta": 2
+    },
+    {
+      "key": "legCurl",
+      "name": "Leg Curl",
+      "group": "Legs",
+      "splitDay": 2,
+      "current": {
+        "date": "2026-04-27",
+        "exercise": "Leg Curl (Machine)",
+        "weightText": "120 weight",
+        "weightValue": 120.0,
+        "unit": "",
+        "repsText": "8/10 \u274c",
+        "sets": [
+          8,
+          8
+        ],
+        "bestSet": 8,
+        "note": "Avenue Mall gym, same load, +2 reps on top set; max set 8",
+        "gymId": "avenue_mall"
+      },
+      "previous": {
+        "date": "2026-04-21",
+        "exercise": "Leg Curl (Machine)",
+        "weightText": "120 weight",
+        "weightValue": 120.0,
+        "unit": "",
+        "repsText": "6/10 \u274c",
+        "sets": [
+          6,
+          6
+        ],
+        "bestSet": 6,
+        "note": "Avenue Mall gym, tested progression, +15 weight",
+        "gymId": "avenue_mall"
+      },
+      "weightDelta": 0.0,
+      "repDelta": 2
+    },
+    {
+      "key": "singleArmCableTriceps",
+      "name": "Single-Arm Cable Triceps",
+      "group": "Arms",
+      "splitDay": 2,
+      "current": {
+        "date": "2026-04-27",
+        "exercise": "Single-Arm Cable Triceps",
+        "weightText": "10 kg one hand",
         "weightValue": 10.0,
         "unit": "kg",
         "repsText": "10/10 \u2705",
@@ -2134,87 +2801,50 @@ window.WORKOUT_DATA = {
           10
         ],
         "bestSet": 10,
-        "note": "+2.5kg bump, hit target",
-        "gymId": "lower_street"
+        "note": "Avenue Mall gym, new one-hand cable triceps exercise baseline; max set 10 each side",
+        "gymId": "avenue_mall"
       },
-      "weightDelta": 2.0,
-      "repDelta": -3
+      "previous": null,
+      "weightDelta": null,
+      "repDelta": null
     },
     {
-      "key": "squatMachine",
-      "name": "Squat Machine",
-      "group": "Legs",
-      "splitDay": 1,
+      "key": "upperBackRow",
+      "name": "Upper Back Row",
+      "group": "Back",
+      "splitDay": 2,
       "current": {
-        "date": "2026-04-15",
-        "exercise": "Squat Machine",
-        "weightText": "30 kg/side",
-        "weightValue": 30.0,
+        "date": "2026-04-27",
+        "exercise": "Upper Back Row (Machine)",
+        "weightText": "75 kg",
+        "weightValue": 75.0,
         "unit": "kg",
-        "repsText": "9,7 \u274c",
+        "repsText": "10/10 \u2705",
         "sets": [
-          9,
-          7
+          10,
+          10
         ],
-        "bestSet": 9,
-        "note": "same weight, +2 reps on first set",
-        "gymId": "unknown"
+        "bestSet": 10,
+        "note": "Avenue Mall gym, upper row, hit target at 75kg",
+        "gymId": "avenue_mall"
       },
       "previous": {
-        "date": "2026-04-10",
-        "exercise": "Squat Machine",
-        "weightText": "30 kg/side",
-        "weightValue": 30.0,
-        "unit": "kg",
+        "date": "2026-04-12",
+        "exercise": "Upper Back Row (Machine)",
+        "weightText": "65 weight",
+        "weightValue": 65.0,
+        "unit": "",
         "repsText": "7/10 \u274c",
         "sets": [
           7,
           7
         ],
         "bestSet": 7,
-        "note": "new gym machine baseline",
-        "gymId": "upper_gym"
+        "note": "New Avenue Mall gym",
+        "gymId": "avenue_mall"
       },
-      "weightDelta": 0.0,
-      "repDelta": 2
-    },
-    {
-      "key": "latPullover",
-      "name": "Lat Pullover",
-      "group": "Back",
-      "splitDay": 4,
-      "current": {
-        "date": "2026-04-15",
-        "exercise": "Lat Pullover",
-        "weightText": "25 kg",
-        "weightValue": 25.0,
-        "unit": "kg",
-        "repsText": "9/10 \u274c",
-        "sets": [
-          9,
-          9
-        ],
-        "bestSet": 9,
-        "note": "load-style reset to max stack at current machine, matched previous reps",
-        "gymId": "unknown"
-      },
-      "previous": {
-        "date": "2026-04-08",
-        "exercise": "Lat Pullover",
-        "weightText": "50 kg",
-        "weightValue": 50.0,
-        "unit": "kg",
-        "repsText": "9/10 \u274c",
-        "sets": [
-          9,
-          9
-        ],
-        "bestSet": 9,
-        "note": "+10kg, +1 rep",
-        "gymId": "lower_street"
-      },
-      "weightDelta": -25.0,
-      "repDelta": 0
+      "weightDelta": 10.0,
+      "repDelta": 3
     }
   ],
   "entryRules": {
@@ -2224,5 +2854,5 @@ window.WORKOUT_DATA = {
     "keepExerciseNotes": true
   },
   "ledgerBacked": true,
-  "sessionCount": 26
+  "sessionCount": 34
 };

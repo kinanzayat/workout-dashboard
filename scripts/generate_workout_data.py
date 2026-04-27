@@ -27,6 +27,7 @@ EXERCISE_KEY_MAP = {
     'Lateral Raise (Cable)': 'lateralRaiseCable',
     'Cable Chest Fly (High to Low)': 'cableChestFly',
     'Bicep Curl (Barbell)': 'bicepCurl',
+    'Bicep Curl (Cable Machine)': 'bicepCurlCable',
     'Incline Chest Press (Barbell/Smith)': 'inclineChestPress',
     'Upper Row (Cable)': 'upperRowCable',
     'Leg Curl (Machine)': 'legCurl',
@@ -35,6 +36,7 @@ EXERCISE_KEY_MAP = {
     'Cable Triceps': 'cableTriceps',
     'Lat Row (Cable)': 'latRow',
     'Pec Deck': 'pecDeck',
+    'Incline Dumbbell Fly': 'inclineDBFly',
     'Middle Cable Chest Press': 'middleCableChestPress',
     'Leg Extension (Machine)': 'legExtension',
     'Cable V-Bar Pushdown': 'cableVBar',
@@ -43,6 +45,7 @@ EXERCISE_KEY_MAP = {
     'Preacher Curl (Barbell)': 'preacherCurlBarbell',
     'Upper Back Row (Machine)': 'upperBackRow',
     'Overhead Triceps (Cable)': 'overheadTricepsCable',
+    'Single-Arm Cable Triceps': 'singleArmCableTriceps',
     'RDLs (Dumbbells)': 'rdls',
     'Bulgarian Split Squats': 'bulgarianSplitSquat',
     'Face Pull (Cable)': 'facePull',
@@ -66,6 +69,7 @@ EXERCISE_META = {
     'facePull': {'name': 'Face Pull', 'group': 'Shoulders', 'splitDay': 2},
     'overheadTricepsCable': {'name': 'OH Triceps (Cable)', 'group': 'Arms', 'splitDay': 2},
     'overheadTricepDB': {'name': 'OH Triceps (DB)', 'group': 'Arms', 'splitDay': 2},
+    'singleArmCableTriceps': {'name': 'Single-Arm Cable Triceps', 'group': 'Arms', 'splitDay': 2},
     'pecDeck': {'name': 'Pec Deck', 'group': 'Chest', 'splitDay': 3},
     'middleCableChestPress': {'name': 'Middle Cable Chest Press', 'group': 'Chest', 'splitDay': 3},
     'latRow': {'name': 'Lat Row', 'group': 'Back', 'splitDay': 3},
@@ -78,15 +82,17 @@ EXERCISE_META = {
     'cableTriceps': {'name': 'Cable Triceps', 'group': 'Arms', 'splitDay': 4},
     'hammerCurls': {'name': 'Hammer Curls', 'group': 'Arms', 'splitDay': 4},
     'cableChestFly': {'name': 'Cable Chest Fly', 'group': 'Chest', 'splitDay': 1},
+    'inclineDBFly': {'name': 'Incline Dumbbell Fly', 'group': 'Chest', 'splitDay': 3},
+    'bicepCurlCable': {'name': 'Bicep Curl (Cable Machine)', 'group': 'Arms', 'splitDay': 3},
     'lateralRaiseCableBehind': {'name': 'Lateral Raise (Cable Behind)', 'group': 'Shoulders', 'splitDay': 1},
     'lateralRaiseCableFront': {'name': 'Lateral Raise (Cable Front)', 'group': 'Shoulders', 'splitDay': 1},
     'lateralRaiseCable': {'name': 'Lateral Raise (Cable)', 'group': 'Shoulders', 'splitDay': 1},
 }
 
 SPLIT = [
-    {'day': 1, 'label': 'Chest / Back / Legs', 'keys': ['chestPressFlatDB', 'latPulldown', 'squatMachine', 'gobletSquat', 'bulgarianSplitSquat', 'lateralRaiseDB', 'preacherCurl', 'preacherCurlBarbell', 'cableChestFly']},
-    {'day': 2, 'label': 'Incline / Row / Hamstring', 'keys': ['inclineChestPress', 'upperBackRow', 'upperRowCable', 'legCurl', 'reversePecDeck', 'facePull', 'overheadTricepsCable', 'overheadTricepDB']},
-    {'day': 3, 'label': 'Pec / Lat / Quads', 'keys': ['pecDeck', 'middleCableChestPress', 'latRow', 'legExtension', 'cableVBar', 'bicepCurl']},
+    {'day': 1, 'label': 'Chest / Back / Legs', 'keys': ['chestPressFlatDB', 'latPulldown', 'unilateralLatPulldown', 'squatMachine', 'gobletSquat', 'bulgarianSplitSquat', 'lateralRaiseDB', 'lateralRaiseCable', 'lateralRaiseCableBehind', 'lateralRaiseCableFront', 'preacherCurl', 'preacherCurlBarbell', 'cableChestFly']},
+    {'day': 2, 'label': 'Incline / Row / Hamstring', 'keys': ['inclineChestPress', 'upperBackRow', 'upperRowCable', 'legCurl', 'reversePecDeck', 'facePull', 'overheadTricepsCable', 'overheadTricepDB', 'singleArmCableTriceps']},
+    {'day': 3, 'label': 'Pec / Lat / Quads', 'keys': ['pecDeck', 'inclineDBFly', 'middleCableChestPress', 'latRow', 'legExtension', 'cableVBar', 'bicepCurl', 'bicepCurlCable']},
     {'day': 4, 'label': 'Shoulders / Pull / RDL', 'keys': ['deltPress', 'latPullover', 'rdls', 'cableTriceps', 'hammerCurls']},
 ]
 
@@ -220,7 +226,7 @@ def main():
                 'weightDelta': weight_delta(current, prev),
                 'repDelta': rep_delta(current, prev),
             })
-        recent_session.sort(key=lambda x: (x.get('splitDay', 99), x.get('name', '')))
+        recent_session.sort(key=lambda x: ((x.get('splitDay') if x.get('splitDay') is not None else 99), x.get('name', '')))
 
     data = {
         'generatedAt': datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC'),

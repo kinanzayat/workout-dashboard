@@ -32,14 +32,17 @@ EXERCISE_ALIASES = {
     'Cable Triceps': ('cableTriceps', 'Cable Triceps'),
     'Lat Row (Cable)': ('latRow', 'Lat Row'),
     'Pec Deck': ('pecDeck', 'Pec Deck'),
+    'Incline Dumbbell Fly': ('inclineDBFly', 'Incline Dumbbell Fly'),
     'Middle Cable Chest Press': ('middleCableChestPress', 'Middle Cable Chest Press'),
     'Leg Extension (Machine)': ('legExtension', 'Leg Extension'),
     'Cable V-Bar Pushdown': ('cableVBar', 'V-Bar Pushdown'),
     'Hammer Curl (Dumbbells)': ('hammerCurls', 'Hammer Curls'),
     'Dumbbell Preacher Curl': ('preacherCurl', 'Preacher Curl (DB)'),
     'Preacher Curl (Barbell)': ('preacherCurlBarbell', 'Preacher Curl (Barbell)'),
+    'Bicep Curl (Cable Machine)': ('bicepCurlCable', 'Bicep Curl (Cable Machine)'),
     'Upper Back Row (Machine)': ('upperBackRow', 'Upper Back Row'),
     'Overhead Triceps (Cable)': ('overheadTricepsCable', 'OH Triceps (Cable)'),
+    'Single-Arm Cable Triceps': ('singleArmCableTriceps', 'Single-Arm Cable Triceps'),
     'RDLs (Dumbbells)': ('rdls', 'RDLs (DB)'),
     'Bulgarian Split Squats': ('bulgarianSplitSquat', 'Bulgarian Split Squat'),
     'Face Pull (Cable)': ('facePull', 'Face Pull')
@@ -73,15 +76,13 @@ def first_number(text: str):
 
 def infer_gym(date_str: str, note: str):
     lower = note.lower()
-    if 'avenue mall' in lower:
+    if 'avenue mall' in lower or 'upper gym' in lower or 'new gym' in lower:
         return 'avenue_mall'
-    if 'upper gym' in lower or 'new gym' in lower:
-        return 'upper_gym'
     if 'lower street gym' in lower or 'previous gym' in lower:
         return 'lower_street'
     if date_str < '2026-04-10':
         return 'lower_street'
-    return 'unknown'
+    return 'avenue_mall'
 
 
 def table_row(line: str):
