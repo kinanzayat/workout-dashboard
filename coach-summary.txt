@@ -1,37 +1,37 @@
-🏋️ Kinan | Day 2 | 2026-04-27
+🏋️ Kinan | Day 3 | 2026-04-28
 Gym: Avenue Mall gym
 
-⇄ Face Pull
-  prev: 45 kg x 10/10 ✅
-  now : 20 kg x 10/10 ✅
-  diff: -25kg
+↘ Bicep Curl (Barbell)
+  prev: 25 kg x 10,8 ❌
+  now : 25 kg x 8/10
+  diff: -2 reps
 
-↗ Incline Chest Press
-  prev: 20 kg/side (Smith, 30°) x 6,5 ❌
-  now : 20 kg/side (Smith, 30°) x 8/10 ❌
-  diff: +2 reps
+→ Lat Row
+  prev: 70 kg x 9/10 ❌
+  now : 70 kg x 9,8
+  diff: same
 
-↗ Leg Curl
-  prev: 120 weight x 6/10 ❌
-  now : 120 weight x 8/10 ❌
-  diff: +2 reps
+↗ Leg Extension
+  prev: 75 kg x 7/10 ❌
+  now : 75 kg x 10/10
+  diff: +3 reps
 
-★ Single-Arm Cable Triceps
-  prev: new baseline
-  now : 10 kg one hand x 10/10 ✅
-  diff: new baseline
+↗ Middle Cable Chest Press
+  prev: 10 x 10/10 ✅
+  now : 12.5 kg each hand x 10/10
+  diff: +2.5kg
 
-↗ Upper Back Row
-  prev: 65 weight x 7/10 ❌
-  now : 75 kg x 10/10 ✅
-  diff: +10kg | +3 reps
+↗ V-Bar Pushdown
+  prev: 32.5 kg x 7/10 ❌
+  now : 32.5 kg x 8/10
+  diff: +1 rep
 
 Summary
-improved 3 | same 0 | need work 0 | gym change 1 | baseline 1
+improved 3 | same 1 | need work 1 | gym change 0 | baseline 0
 
 Notes
-- Face Pull: Avenue Mall gym baseline for face pulls; max set 10
-- Incline Chest Press: Avenue Mall gym, same load, +2 reps on top set; max set 8
-- Leg Curl: Avenue Mall gym, same load, +2 reps on top set; max set 8
-- Single-Arm Cable Triceps: Avenue Mall gym, new one-hand cable triceps exercise baseline; max set 10 each side
-- Upper Back Row: Avenue Mall gym, upper row, hit target at 75kg
+- Bicep Curl (Barbell): Avenue Mall gym; much better form with slow descent
+- Lat Row: Avenue Mall gym; lower back hurt a bit, monitor bracing/form
+- Leg Extension: Avenue Mall gym; first set 70kg x11, second/top set 75kg x10
+- Middle Cable Chest Press: Avenue Mall gym; 12.5kg each hand, max set 10
+- V-Bar Pushdown: Avenue Mall gym; weight not specified today, assumed same as previous V-bar load
