@@ -1,37 +1,31 @@
-🏋️ Kinan | Day 3 | 2026-04-28
+🏋️ Kinan | Day 4 | 2026-04-30
 Gym: Avenue Mall gym
 
-↘ Bicep Curl (Barbell)
-  prev: 25 kg x 10,8 ❌
-  now : 25 kg x 8/10
-  diff: -2 reps
-
-→ Lat Row
-  prev: 70 kg x 9/10 ❌
-  now : 70 kg x 9,8
-  diff: same
-
-↗ Leg Extension
-  prev: 75 kg x 7/10 ❌
-  now : 75 kg x 10/10
-  diff: +3 reps
-
-↗ Middle Cable Chest Press
-  prev: 10 x 10/10 ✅
-  now : 12.5 kg each hand x 10/10
-  diff: +2.5kg
-
-↗ V-Bar Pushdown
-  prev: 32.5 kg x 7/10 ❌
-  now : 32.5 kg x 8/10
+↗ Cable Triceps
+  prev: 25 kg x 9/10 ❌
+  now : 25 kg x 10,7 ❌
   diff: +1 rep
 
+↘ Delt Press Machine
+  prev: 55 kg total x 9,7 ❌
+  now : 35 kg total x 9/10 ❌
+  diff: -20kg
+
+↗ Lat Pullover
+  prev: 25 kg x 9,7 ❌
+  now : 25 kg x 10/10 ✅
+  diff: +1 rep
+
+↗ RDLs (DB)
+  prev: 25 kg each x 8/10 ❌
+  now : 25 kg each x 10/10 ✅
+  diff: +2 reps
+
 Summary
-improved 3 | same 1 | need work 1 | gym change 0 | baseline 0
+improved 3 | same 0 | need work 1 | gym change 0 | baseline 0
 
 Notes
-- Bicep Curl (Barbell): Avenue Mall gym; much better form with slow descent
-- Lat Row: Avenue Mall gym; lower back hurt a bit, monitor bracing/form
-- Leg Extension: Avenue Mall gym; first set 70kg x11, second/top set 75kg x10
-- Middle Cable Chest Press: Avenue Mall gym; 12.5kg each hand, max set 10
-- V-Bar Pushdown: Avenue Mall gym; weight not specified today, assumed same as previous V-bar load
+- Cable Triceps: first set hit 10, second set 7; same 25kg as previous cable triceps.
+- Delt Press Machine: Kinan remembers this as the same machine as last time; verify load style because previous log was 55 kg total x9,7.
+- Lat Pullover: User called it lat pull down; logged under Day 4 lat pullover/25kg machine pattern. Hit target.
+- RDLs (DB): same weight, recovered to target after lower 2026-04-23 session.
